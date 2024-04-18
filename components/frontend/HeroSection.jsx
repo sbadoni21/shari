@@ -12,7 +12,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="flex justify-center text-white items-center h-screen w-screen"
+    <div className="flex justify-center text-white items-center h-screen w-full"
     style={{
         backgroundImage: 'url("/bgmain.png")',
         backgroundSize: "cover",
