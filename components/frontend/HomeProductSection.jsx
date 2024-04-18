@@ -37,10 +37,10 @@ const HomeProductSection = () => {
   return (
     <div style={{ position: "relative" }} className="h-full w-full">
       <div className="flex items-center justify-start gap-4 pl-24">
-        <div className="text-6xl allura text-pink-400">
+        <div className="text-6xl allura text-[#FDCCE0]">
           Best Products for you
         </div>
-        <FaRegHeart className="text-pink-400 text-4xl " />
+        <FaRegHeart className="text=[#FDCCE0] text-4xl " />
       </div>
       <Space16 />
       <Space16 />
