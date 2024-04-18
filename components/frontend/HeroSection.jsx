@@ -28,7 +28,7 @@ const HeroSection = () => {
         <div className="flex justify-start items-end align-bottom">
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="text-9xl londrinaoutline transition-opacity duration-1000 ease-in delay-300"
+            className="text-9xl londrinaoutline transition-opacity duration-1000 ease-in delay-300 font-extrabold"
           >
             ELF
           </p>
@@ -49,7 +49,7 @@ const HeroSection = () => {
           </p>
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="londrinaoutline text-9xl  transition-opacity duration-1000 ease-in delay-1000"
+            className="londrinaoutline text-9xl  transition-opacity duration-1000 ease-in delay-1000 font-bold"
           >
             SHA
           </p>
@@ -61,7 +61,7 @@ const HeroSection = () => {
           </p>
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="londrinaoutline text-9xl  transition-opacity duration-1000 ease-in delay-1000"
+            className="londrinaoutline text-9xl  transition-opacity duration-1000 ease-in delay-1000 font-bold"
           >
             RI
           </p>

@@ -37,9 +37,7 @@ const HomeProductSection = () => {
   return (
     <div style={{ position: "relative" }} className="h-full w-full">
       <div className="flex items-center justify-start gap-4 pl-24">
-
         <div className="text-5xl allura text-pink-400">
-
           Best Products for you
         </div>
         <FaRegHeart className="text-pink-400 text-4xl " />
@@ -74,7 +72,7 @@ const HomeProductSection = () => {
           centerMode={true}
           keyBoardControl={true}
           transitionDuration={500}
-          removeArrowOnDeviceType={["tablet", "mobile" , "desktop"]}
+          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
           containerClass="carousel-container"
           itemClass="carousel-item"
         >
@@ -91,11 +89,15 @@ const HomeProductSection = () => {
             <p>Legend 3</p>
           </div>
         </Carousel>
-      )}
-      <div className = "flex justify-center items-center"> 
-      <div className = "text-2xl allura text-white">
-        <div className = " flex justify-center items-center pt-3  pb-2 pr-4 pl-4 h-12 rounded-3xl bg-pink-300" > See all...</div>
-      </div>
+      )}{" "}
+      <div className="flex justify-center items-center">
+        <Space16 />
+        <div className="text-2xl allura text-white">
+          <div className=" flex justify-center items-center pt-3  pb-2 pr-4 pl-4 h-12 rounded-3xl bg-pink-300">
+            {" "}
+            See all...
+          </div>
+        </div>
       </div>
     </div>
   );
