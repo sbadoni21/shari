@@ -3,15 +3,15 @@ import Space16 from "../backend/Space16";
 
 const BlogSection = () => {
   return (
-    <div className="w-full h-1/2  pl-20 pr-20 pt-20 pb-20 bg-pink-200 text-white lemonada  ">
+    <div className="w-full h-1/2  pl-20 pr-20 pt-20 pb-20 bg-pink-200 text-pink-500 text-center lemonada  ">
       <div className="flex items-center justify-start gap-4 pl-24">
-        <div className="text-6xl allura text-white">Latest Blogs</div>
+        <div className="text-6xl allura text-white">Blogs</div>
       </div>
       <Space16 />
       <Space16 />
       <div className="flex gap-10  justify-center items-center  ">
     
-        <div className="w-56 bg-slate-300 border-8 border-slate-300 ">
+      <div className="w-56 bg-white border-8 border-white ">
           <img src="image4.jpg" alt="img4" className="" />
           <div className=" flex justify-center items-center pt-4">
             Heading Content
@@ -21,7 +21,7 @@ const BlogSection = () => {
             repellendus sequi, nesciunt
           </div>
         </div>
-        <div className="w-56 bg-slate-300 border-8 border-slate-300 ">
+        <div className="w-56 bg-white border-8 border-white ">
           <img src="image4.jpg" alt="img4" className="" />
           <div className=" flex justify-center items-center pt-4">
             Heading Content
@@ -31,7 +31,7 @@ const BlogSection = () => {
             repellendus sequi, nesciunt
           </div>
         </div>
-        <div className="w-56 bg-slate-300 border-8 border-slate-300 ">
+        <div className="w-56 bg-white border-8 border-white ">
           <img src="image4.jpg" alt="img4" className="" />
           <div className=" flex justify-center items-center pt-4 ">
             Heading Content
@@ -41,7 +41,7 @@ const BlogSection = () => {
             repellendus sequi, nesciunt
           </div>
         </div>
-        <div className="w-56 bg-slate-300 border-8 border-slate-300 ">
+        <div className="w-56 bg-white border-8 border-white ">
           <img src="image4.jpg" alt="img4" className="" />
           <div className=" flex justify-center items-center pt-4 ">
             Heading Content

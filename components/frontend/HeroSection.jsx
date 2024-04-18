@@ -43,19 +43,19 @@ const HeroSection = () => {
         <div className="flex items-end justify-start align-bottom">
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="allura text-9xl  transition-opacity duration-1000 ease-in delay-700"
+            className="allura text-9xl pr-4  transition-opacity duration-1000 ease-in delay-700"
           >
             By
           </p>
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="londrinaoutline text-9xl  transition-opacity duration-1000 ease-in delay-1000 font-bold"
+            className="londrinaoutline text-9xl pr-4   transition-opacity duration-1000 ease-in delay-1000 font-bold"
           >
             SHA
           </p>
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="allura text-9xl  transition-opacity duration-1000 ease-in delay-1000"
+            className="allura text-9xl pr-4   transition-opacity duration-1000 ease-in delay-1000"
           >
             &
           </p>

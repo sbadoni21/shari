@@ -1,12 +1,33 @@
 import { Inter } from "next/font/google";
 import "../styles/globals.scss";
-import { Allura, Roboto_Mono , Londrina_Outline, Lemonada} from "next/font/google";
+import {
+  Allura,
+  Roboto_Mono,
+  Londrina_Outline,
+  Lemonada,
+} from "next/font/google";
+import TopNavBar from "@/components/frontend/TopNavBar";
 
-
-const allura = Allura({ subsets: ["latin"], weight:['400'], variable:'--font-allura' });
-const lemonada = Lemonada({ subsets: ["latin"], weight:['400'], variable:'--font-lemonada' });
-const robotoMono = Roboto_Mono({ subsets: ["latin"], weight:['400'], variable:'--font-roboto-mono' });
-const londrinaoutline = Londrina_Outline({ subsets: ["latin"], weight:['400'], variable:'--font-londrina-outline' });
+const allura = Allura({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-allura",
+});
+const lemonada = Lemonada({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-lemonada",
+});
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-roboto-mono",
+});
+const londrinaoutline = Londrina_Outline({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-londrina-outline",
+});
 
 export const metadata = {
   title: "Ecommerce",
@@ -16,7 +37,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${allura.variable} ${robotoMono.variable} ${londrinaoutline.variable}  ${lemonada.variable}`}>{children}</body>
+      <body
+        className={`${allura.variable} ${robotoMono.variable} ${londrinaoutline.variable}  ${lemonada.variable}`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
