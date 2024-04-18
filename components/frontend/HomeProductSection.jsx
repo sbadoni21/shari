@@ -37,7 +37,7 @@ const HomeProductSection = () => {
   return (
     <div style={{ position: "relative" }} className="h-full w-full">
       <div className="flex items-center justify-start gap-4 pl-24">
-        <div className="text-5xl allura text-pink-400">
+        <div className="text-6xl allura text-pink-400">
           Best Products for you
         </div>
         <FaRegHeart className="text-pink-400 text-4xl " />
@@ -46,16 +46,15 @@ const HomeProductSection = () => {
       <Space16 />
       {loading && (
         <div
+        className="w-full h-full"
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+
+  
             backgroundColor: "rgba(255, 255, 255, 0.8)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
           }}
         >
           <Loader />
@@ -91,10 +90,10 @@ const HomeProductSection = () => {
         </Carousel>
       )}{" "}
       <div className="flex justify-center items-center">
-        <Space16 />
-        <div className="text-2xl allura text-white">
+
+        <div className="text-2xl allura text-white p-16">
           <div className=" flex justify-center items-center pt-3  pb-2 pr-4 pl-4 h-12 rounded-3xl bg-pink-300">
-            {" "}
+          
             See all...
           </div>
         </div>
