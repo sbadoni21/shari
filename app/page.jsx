@@ -5,6 +5,8 @@ import HeroSection from "@/components/frontend/HeroSection";
 import HomeProductSection from "@/components/frontend/HomeProductSection";
 import Space16 from "@/components/backend/Space16";
 import BlogSection from "@/components/frontend/BlogSection";
+import Instagram from "@/components/frontend/Instagram";
+import Footer from "@/components/frontend/Footer";
 
 const HomePage = () => {
   const [showContent, setShowContent] = useState(false);
@@ -26,6 +28,8 @@ const HomePage = () => {
       <Space16 />
       <HomeProductSection />
       <BlogSection/>
+      <Instagram />
+      <Footer/>
     </div>
   );
 };

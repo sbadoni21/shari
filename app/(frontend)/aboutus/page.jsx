@@ -30,12 +30,12 @@ const HomePage = () => {
         <img
           src="image4.jpg"
           alt=""
-          className="w-60 h-96  absolute top-96 right-20"
+          className="w-60 h-96  absolute top-80 right-20"
         />
         <img
           src="image4.jpg"
           alt=""
-          className="w-[800px] h-60  absolute top-[500px] left-20"
+          className="w-[800px] h-60  absolute top-[450px] left-20"
         />
         <div className="absolute top-0  w-screen h-screen flex items-center justify-center ">
           <div className="flex flex-col items-start justify-start relative w-1/2 h-1/2">
@@ -49,7 +49,7 @@ const HomePage = () => {
             </div>
             <p
               style={{ opacity: showContent ? 1 : 0 }}
-              className="allura text-[150px] pr-4  transition-opacity duration-1000 ease-in delay-700 absolute top-10 left-20 z-50"
+              className="allura text-[140px] pr-4  transition-opacity duration-1000 ease-in delay-700 absolute top-10 left-20 z-50"
             >
               High Contrast
             </p>
