@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  min-height: 100vh;
+}
+
+.allura{
+  font-family: var(--font-allura);
+}
+
+.robotomono{
+  font-family: var(--font-roboto-mono);
+}
+
+.londrinaoutline{
+  font-family:  var(--font-londrina-outline);
+}
