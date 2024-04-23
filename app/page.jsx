@@ -7,6 +7,7 @@ import Space16 from "@/components/backend/Space16";
 import BlogSection from "@/components/frontend/BlogSection";
 import Instagram from "@/components/frontend/Instagram";
 import Footer from "@/components/frontend/Footer";
+import firebase_app, { db } from "@/firebase/firebase";
 
 const HomePage = () => {
   const [showContent, setShowContent] = useState(false);
@@ -21,8 +22,7 @@ const HomePage = () => {
 
   return (
     <div className="">
-              <TopNavBar />
-
+      <TopNavBar />
       <HeroSection />
       <Space16 />
       <Space16 />

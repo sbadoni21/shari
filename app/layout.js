@@ -5,6 +5,7 @@ import {
   Roboto_Mono,
   Londrina_Outline,
   Lemonada,
+  Montserrat_Alternates
 } from "next/font/google";
 import TopNavBar from "@/components/frontend/TopNavBar";
 
@@ -12,6 +13,11 @@ const allura = Allura({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-allura",
+});
+const montserrat_Alternates = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-Montserrat_Alternates",
 });
 const lemonada = Lemonada({
   subsets: ["latin"],
@@ -38,7 +44,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${allura.variable} ${robotoMono.variable} ${londrinaoutline.variable}  ${lemonada.variable}`}
+        className={`${allura.variable} ${montserrat_Alternates.variable} ${robotoMono.variable} ${londrinaoutline.variable}  ${lemonada.variable}`}
       >
         {children}
       </body>

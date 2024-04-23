@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/frontend/Footer";
 import TopNavBar from "@/components/frontend/TopNavBar";
 import React, { useState, useEffect } from "react";
 
@@ -16,7 +17,8 @@ const HomePage = () => {
 
   return (
     <div className="">
-              <TopNavBar />
+        <TopNavBar />
+        <Footer/>
 
 
     </div>

@@ -34,9 +34,14 @@ const HeroSection = () => {
           </p>
           <p
             style={{ opacity: showContent ? 1 : 0 }}
-            className="text-9xl allura  transition-opacity duration-1000 ease-in delay-500"
+            className="w-4"    >
+            
+          </p>
+          <p
+            style={{ opacity: showContent ? 1 : 0 }}
+            className="text-9xl allura transition-opacity duration-1000 ease-in delay-500"
           >
-            CARE
+            Care
           </p>
         </div>
 

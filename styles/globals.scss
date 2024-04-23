@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+h3{
+  font-family: var(--font-montserrat_Alternates);
+  font-size: 32px;
+  color: #FDCCE0;
 
+}
 
 body {
   min-height: 100vh;
@@ -11,7 +16,10 @@ body {
 .allura{
   font-family: var(--font-allura);
 }
+.montserrat_Alternates{
+  font-family: var(--font-montserrat_Alternates);
 
+}
 .robotomono{
   font-family: var(--font-roboto-mono);
 }
