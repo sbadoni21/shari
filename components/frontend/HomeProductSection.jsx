@@ -1,20 +1,16 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import Loader from "./Loading";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaRegHeart } from "react-icons/fa";
 import Space16 from "../backend/Space16";
-import getProductData from "../../api/frontend/amazonApi";
 import { getDocs, query, collection, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import Link from "next/link";
-
 const HomeProductSection = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -33,7 +29,6 @@ const HomeProductSection = () => {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -103,6 +98,7 @@ const HomeProductSection = () => {
                 <img
                   src={item.imgURL}
                   alt={`Image`}
+                  key={item.imgURL.key}
                   className="h-4/6 object-cover"
                 />
                 <div className="text-start ml-2 mt-2 ">

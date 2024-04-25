@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import TopNavBar from "@/components/frontend/TopNavBar";
-
+import Footer from "@/components/frontend/Footer";
 
 const HomePage = () => {
   const [showContent, setShowContent] = useState(false);
@@ -16,9 +16,11 @@ const HomePage = () => {
 
   return (
     <div className="">
-              <TopNavBar />
+      <TopNavBar />
 
 
+      
+      <Footer />
     </div>
   );
 };
