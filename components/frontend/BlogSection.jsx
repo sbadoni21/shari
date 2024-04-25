@@ -42,7 +42,8 @@ const BlogSection = () => {
         {routineData.map((routine, index) => (
           <Link href={`/blogs/${routine.uid}`} >
           <div key={index} className="w-56 bg-white border-8 border-white p-2">
-             <img src={routine.heroImage} alt="Routine Image" className="" />
+             <img src={routine.heroImage} alt="Routine Image"                           key={routine.index}
+ className="" />
              <div className="flex justify-center items-center pt-4">
                {routine.title}
              </div>
