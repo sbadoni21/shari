@@ -40,9 +40,9 @@ const BlogSection = () => {
       <Space16 />
       <div className="flex gap-10 justify-center items-center">
         {routineData.map((routine, index) => (
-          <Link href={`/blogs/${routine.uid}`} >
+          <Link href={`/blogs/${routine.uid}`} key={index}  >
           <div key={index} className="w-56 bg-white border-8 border-white p-2">
-             <img src={routine.heroImage} alt="Routine Image"                           key={routine.index}
+             <img src={routine.heroImage} alt="Routine Image"                          
  className="" />
              <div className="flex justify-center items-center pt-4">
                {routine.title}

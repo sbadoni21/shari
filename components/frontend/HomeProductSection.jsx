@@ -90,7 +90,7 @@ const HomeProductSection = () => {
           className="ml-20 mr-20"
         >
           {products.map((item, index) => (
-            <Link
+            <Link key={index} 
               href={`/products/${item.id}`}
               className="shadow-lg rounded-2xl"
             >
