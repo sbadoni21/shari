@@ -1,47 +1,64 @@
-import React from 'react'
-import Space16 from '../backend/Space16'
+"use client";
+import React, { useState, useEffect } from "react";
+import Space16 from "../backend/Space16";
+import dotenv from "dotenv";
+dotenv.config();
 
 const Instagram = () => {
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    const fetchInstagramPhotos = async () => {
+      try {
+        const response = await fetch(
+          `https://graph.instagram.com/me/media?fields=id,media_url,permalink,media_type,caption&access_token=${process.env.NEXT_PUBLIC_INSTAGRAM_KEY}`
+        );
+        const data = await response.json();
+        setPhotos(data.data);
+      } catch (error) {
+        console.error("Error fetching Instagram photos:", error);
+      }
+    };
+
+    fetchInstagramPhotos();
+  }, []);
+
+  // Function to extract first two lines from the caption
+  const extractFirstTwoLines = (caption) => {
+    return caption.split("\n").slice(0, 1).join("\n");
+  };
+
   return (
-<div className="w-full h-1/2  pl-20 pr-20 pt-20 pb-20 bg-white text-[#ffffff] text-center lemonada  ">
-      <div className="flex items-center justify-start gap-4 pl-24">
-        <div className="text-6xl allura text-[#FDCCE0]">Instagram</div>
-      </div>
-      <Space16 />
-      <Space16 />
-      <div className="flex gap-10  justify-center items-center  ">
-    
-      <div className="w-56 bg-[#FDCCE0] border-8 border-white p-2 ">
-          <img src="image4.jpg" alt="img4" className="" />
-          <div className=" flex justify-center items-center pt-4 pb-4">
-            Heading Content
+    <div className="container mx-auto">
+              <Space16/>
+              <Space16/>
+ <div className="text-6xl allura text-[#FDCCE0]">
+       Latest Instagram Posts
+        </div>   
+        <Space16/>
+        <Space16/>   <div className="flex flex-wrap justify-center gap-4 min-h-fit mb-10">
+        {photos.slice(0, 4).map((photo) => (
+          <div key={photo.id} className="w-1/5">
+            <div className="bg-gray-100 border border-gray-200 shadow-lg shadow-gray-300 rounded-lg overflow-hidden">
+              {photo.media_type === 'IMAGE' && (
+                <img src={photo.media_url} alt={`Instagram Photo ${photo.id}`} className="w-full h-auto" />
+              )}
+              {photo.media_type === 'VIDEO' && (
+                <video autoPlay muted={true} loop className="w-full h-auto">
+                  <source src={photo.media_url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+              <div className="p-4">
+                <div className="text-sm mb-2">{extractFirstTwoLines(photo.caption)}</div>
+                <a href={photo.permalink} className="text-blue-500 hover:underline">View on Instagram</a>
+              </div>
+            </div>
           </div>
-      
-        </div>
-        <div className="w-56 bg-[#FDCCE0] border-8 border-white p-2 ">
-          <img src="image4.jpg" alt="img4" className="" />
-          <div className=" flex justify-center items-center pt-4 pb-4">
-            Heading Content
-          </div>
-        
-        </div>
-        <div className="w-56 bg-[#FDCCE0] border-8 border-white p-2 ">
-          <img src="image4.jpg" alt="img4" className="" />
-          <div className=" flex justify-center items-center pt-4 pb-4">
-            Heading Content
-          </div>
-      
-        </div>
-        <div className="w-56 bg-[#FDCCE0] border-8 border-white p-2 ">
-          <img src="image4.jpg" alt="img4" className="" />
-          <div className=" flex justify-center items-center pt-4 pb-4">
-            Heading Content
-          </div>
-     
-        </div>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Instagram
+export default Instagram;
