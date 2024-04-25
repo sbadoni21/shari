@@ -40,7 +40,7 @@ const ProductsPage = () => {
           {products.map(product => (
             <Link key={product.id} href={`/products/${product.id}`} >
               <div className="bg-slate-100 rounded-lg shadow-lg shadow-slate-300 overflow-hidden m-4">
-                <img src={product.imgURL} alt={product.title} className="w-full h-48 object-cover" />
+                <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
                   <p className="text-gray-600 mb-2">{product.description.substring(1,20)}</p>
