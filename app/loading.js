@@ -16,7 +16,7 @@ const Loading = () => {
     <div className="flex justify-center items-center w-full h-full bg-slate-200">
       <div className="w-full h-full">
         {" "}
-        <Lottie options={defaultOptions} />
+       Loading...
       </div>
     </div>
   );

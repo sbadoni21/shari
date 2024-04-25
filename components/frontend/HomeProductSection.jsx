@@ -1,19 +1,40 @@
 "use client";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import Loader from "./Loading";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaRegHeart } from "react-icons/fa";
 import Space16 from "../backend/Space16";
+import getProductData from "../../api/frontend/amazonApi";
+import { getDocs, query, collection, orderBy } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import Link from "next/link";
 
 const HomeProductSection = () => {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "product"));
+        console.log("Query snapshot:", querySnapshot.docs);
+
+        const productsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log(productsData);
+        setProducts(productsData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const responsive = {
@@ -46,15 +67,12 @@ const HomeProductSection = () => {
       <Space16 />
       {loading && (
         <div
-        className="w-full h-full"
+          className="w-full h-full"
           style={{
-
-  
             backgroundColor: "rgba(255, 255, 255, 0.8)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            
           }}
         >
           <Loader />
@@ -74,29 +92,43 @@ const HomeProductSection = () => {
           removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
           containerClass="carousel-container"
           itemClass="carousel-item"
+          className="ml-20 mr-20"
         >
-          <div>
-            <img src="image1.jpg" alt="Image 1" />
-            <p>Legend 1</p>
-          </div>
-          <div>
-            <img src="image2.jpg" alt="Image 2" />
-            <p>Legend 2</p>
-          </div>
-          <div>
-            <img src="image3.jpg" alt="Image 3" />
-            <p>Legend 3</p>
-          </div>
-        </Carousel>
-      )}{" "}
-      <div className="flex justify-center items-center">
+          {products.map((item, index) => (
+            <Link
+              href={`/products/${item.id}`}
+              className="shadow-lg rounded-2xl"
+            >
+              <div className="shadow-lg shadow-slate-300 rounded-2xl overflow-hidden bg-slate-100  mx-4 my-6 flex-col h-96 w-72">
+                <img
+                  src={item.imgURL}
+                  alt={`Image`}
+                  className="h-4/6 object-cover"
+                />
+                <div className="text-start ml-2 mt-2 ">
+                  <p className="text-base text-wrap text-slate-700">
+                    {item.title}
+                  </p>
 
-        <div className="text-2xl allura text-white p-16">
+                  <p className="text-base text-wrap text-slate-700">
+                    Price : {item.price}
+                  </p>
+                  <p className="text-base text-wrap text-slate-700">
+                    Rating : {item.rating}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </Carousel>
+      )}
+
+      <div className="flex justify-center items-center">
+        <Link href="/products" className="text-2xl allura text-white p-16">
           <div className=" flex justify-center items-center pt-3  pb-2 pr-4 pl-4 h-12 rounded-3xl bg-pink-300">
-          
             See all...
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

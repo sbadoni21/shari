@@ -14,7 +14,6 @@ const BlogSection = () => {
       if (!querySnapshot.empty) {
         const data = querySnapshot.docs.map(doc => {
           const routine = doc.data();
-          console.log(routine);
           return {
             title: routine.title,
              uid : routine.uid,
