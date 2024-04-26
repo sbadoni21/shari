@@ -48,7 +48,7 @@ const QueryForm = () => {
         {submitted ? (
           <div className=" flex-col text-center">
             <h3 className="text-3xl font-bold mb-4">Thank you for your message!</h3>
-            <p>We'll get back to you as soon as possible.</p>
+            <p>We ll get back to you as soon as possible.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full max-w-lg">
