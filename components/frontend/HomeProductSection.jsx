@@ -52,11 +52,11 @@ const HomeProductSection = () => {
 
   return (
     <div style={{ position: "relative" }} className="h-full w-full">
-      <div className="flex items-center justify-start gap-4 pl-24">
+      <div className="flex items-start justify-start gap-4 p-4 md:pl-24">
         <div className="text-6xl allura text-[#FDCCE0]">
           Best Products for you
         </div>
-        <FaRegHeart className="text=[#FDCCE0] text-4xl " />
+        
       </div>
       <Space16 />
       <Space16 />
@@ -80,6 +80,7 @@ const HomeProductSection = () => {
           swipeable={true}
           infinite={true}
           autoPlay={true}
+          partialVisible ={false}
           autoPlaySpeed={3000}
           centerMode={true}
           keyBoardControl={true}
@@ -87,14 +88,14 @@ const HomeProductSection = () => {
           removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
           containerClass="carousel-container"
           itemClass="carousel-item"
-          className="ml-20 mr-20"
+          className="md:ml-20 md:mr-20"
         >
           {products.map((item, index) => (
             <Link key={index} 
               href={`/products/${item.id}`}
               className="shadow-lg rounded-2xl"
             >
-              <div className="shadow-lg shadow-slate-300 rounded-2xl overflow-hidden bg-slate-100  mx-4 my-6 flex-col h-96 w-72">
+              <div className="shadow-lg shadow-slate-300 rounded-2xl overflow-hidden bg-slate-100  mx-4 my-6 flex-col h-60 md:h-96 md:w-72">
                 <img
                   src={item.imgURL}
                   alt={`Image`}

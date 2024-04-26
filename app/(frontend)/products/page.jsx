@@ -8,12 +8,8 @@ const HomePage = () => {
 
   return (
     <div className="">
-      
-        <TopNavBar />
         <ProductsPage/>
         <Footer/>
-
-
     </div>
   );
 };
