@@ -33,10 +33,10 @@ export const SideNavBar = () => {
             <span>Products</span>
           </div>
         </Link>
-        <Link href="#">
+        <Link href="/dashboard/tags">
           <div className="flex items-center px-4 py-2 text-white hover:bg-gray-700">
             <FiUser className="mr-2" /> 
-            <span>Customers</span>
+            <span>Tags</span>
           </div>
         </Link>
         <Link href="#">

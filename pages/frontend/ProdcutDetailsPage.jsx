@@ -103,10 +103,8 @@ const ProductDetailsPage = () => {
             
                   <div className="text-3xl text-black montserrat_Alternates">{routineData.title}</div>
                   <div className="text-sm text-slate-800 montserrat_Alternates">{routineData.description}</div>
-                  <div>{routineData.price}</div>
                   <div className="text-sm text-slate-600" >Rating : {routineData.rating}</div>
                   <div className="flex ">
-              {" "}
               <Link href={routineData.link} className=" p-2 pr-4 pl-4 bg-[#FDCCE0] rounded-full text-slate-700 text-3xl allura shadow-lg shadow-[#FDCCE0]">
                 Link
               </Link>

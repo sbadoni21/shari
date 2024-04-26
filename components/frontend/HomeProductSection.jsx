@@ -106,9 +106,7 @@ const HomeProductSection = () => {
                     {item.title}
                   </p>
 
-                  <p className="text-base text-wrap text-slate-700">
-                    Price : {item.price}
-                  </p>
+      
                   <p className="text-base text-wrap text-slate-700">
                     Rating : {item.rating}
                   </p>

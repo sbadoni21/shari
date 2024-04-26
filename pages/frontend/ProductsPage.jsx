@@ -15,7 +15,7 @@ const ProductsPage = () => {
         console.log("Query snapshot:", querySnapshot.docs);
 
         const productsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
+          id: doc.uid,
           ...doc.data()
         }));
         console.log(productsData);
@@ -44,7 +44,6 @@ const ProductsPage = () => {
                 <div className="p-4">
                   <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
                   <p className="text-gray-600 mb-2">{product.description.substring(1,20)}</p>
-                  <p className="text-gray-800 font-bold mb-2">Price: {product.price}</p>
                   <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
                   <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
                 </div>
