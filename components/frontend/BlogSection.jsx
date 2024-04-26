@@ -32,8 +32,8 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <div className="w-full h-1/2 pl-20 pr-20 pt-20 pb-20 bg-primary text-pink-500 text-center lemonada">
-      <div className="flex items-center justify-start gap-4 pl-24">
+    <div className="w-full h-1/2 p-5 md:p-20 bg-primary text-pink-500 text-center lemonada">
+      <div className="flex items-center justify-start gap-4  md:pl-24">
         <div className="text-6xl allura text-white">Routines</div>
       </div>
       <Space16 />
