@@ -24,8 +24,13 @@ const Instagram = () => {
   }, []);
 
   const extractFirstTwoLines = (caption) => {
-    return caption;
+    if (typeof caption !== 'string') {
+      return ''; 
+    }
+    const lines = caption.split('\n'); 
+    return lines.slice(0, 2).join('\n'); 
   };
+  
 
   return (
     <div className="container mx-auto">
@@ -36,8 +41,8 @@ const Instagram = () => {
         </div>   
         <Space16/>
         <Space16/>   <div className="flex flex-wrap justify-center gap-4 min-h-fit mb-10">
-        {photos.slice(0, 4).map((photo) => (
-          <div key={photo.id} className="w-1/5">
+        {photos.slice(0, 5).map((photo) => (
+          <div key={photo.id} className="w-1/6">
             <div className="bg-gray-100 border border-gray-200 shadow-lg shadow-gray-300 rounded-lg overflow-hidden">
               {photo.media_type === 'IMAGE' && (
                 <img src={photo.media_url} alt={`Instagram Photo ${photo.id}`} className="w-full h-auto" />

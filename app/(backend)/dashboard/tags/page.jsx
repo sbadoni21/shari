@@ -7,7 +7,7 @@ const Page = () => {
   const [tags, setTags] = useState([]);
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
 
-  useEffect(() => {
+
     const fetchTags = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "tags"));
@@ -20,7 +20,7 @@ const Page = () => {
         console.error("Error fetching tags:", error);
       }
     };
-
+    useEffect(() => {
     fetchTags();
   }, []);
 
@@ -52,8 +52,8 @@ const Page = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 text-white">
-      <h2 className="text-3xl font-bold mb-6">All Tags</h2>
+    <div className="container  p-20 text-primary">
+      <h2 className="text-5xl font-bold mb-6 allura">All Tags</h2>
       <div className="flex justify-end mt-4">
         <input 
           type="text" 
@@ -63,12 +63,12 @@ const Page = () => {
         />
         <button 
           onClick={() => addTag(document.getElementById("tagInput").value)} 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-slate font-bold py-2 px-4    rounded bg-primary"
         >
           Add New Tag
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-4 text-gray-600" >
+      <div className="grid grid-cols-3 gap-4 text-gray-600 mt-10 " >
         {tags.map((tag) => (
           <div key={tag.id} className="bg-primary p-4 rounded-lg flex justify-between items-center">
             <span className="text-lg">{tag.tag}</span>

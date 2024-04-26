@@ -46,7 +46,7 @@ export default function Home() {
       <Space16 />
       <Space16 />
       <div className="flex  justify-between items-center gap-6 ">
-        <div className="bg-slate-900 w-1/2 h-[500px] flex flex-col justify-between items-center p-10 rounded-2xl">
+        <div className="bg-primary w-1/2 h-[500px] flex flex-col justify-between items-center p-10 rounded-2xl">
           <div className = 'text-white text-2xl font-bold'>Sales Chart</div>
           <SalesLineChart className="w-1/2" />
         </div>

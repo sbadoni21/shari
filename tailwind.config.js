@@ -14,6 +14,7 @@ module.exports = {
       },
       colors:{
         primary: '#FDCCE0',
+        slate:'#64748B',
         pink: "#C9184A",
         blue: "#02394A",
         cream: "#F8EDEB",

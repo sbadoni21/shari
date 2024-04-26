@@ -6,19 +6,20 @@ import { TbSquareRounded } from "react-icons/tb";
 
 const TopNavBar = () => {
   return (
-    <div className="flex justify-between items-center pt-4 pb-4 pr-10 pl-10 bg-slate-950 fixed w-4/5 backdrop-filter backdrop-blur-sm h-16">
+    <div className="flex justify-between items-center pt-4 pb-4 pr-10 pl-10 bg-slate-950 fixed w-4/5  text-2xl text-slate
+    bg-primary  h-20">
       <Link href="#">
-          <GiHamburgerMenu className="mr-2 text-white" /> 
+          <GiHamburgerMenu className="mr-2" /> 
       </Link>
  <div className='flex space-x-3' >   <Link href="#">
-          <IoIosNotifications className="text-white " /> 
+          <IoIosNotifications className="" /> 
         </Link>
         <Link href="#">
-          <GiHamburgerMenu className="text-white " /> 
+          <GiHamburgerMenu className="" /> 
         </Link>
 
         <Link href="#">
-          <TbSquareRounded className="text-white " /> 
+          <TbSquareRounded className=" " /> 
         </Link></div>
      
  

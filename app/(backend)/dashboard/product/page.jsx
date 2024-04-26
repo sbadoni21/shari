@@ -10,13 +10,15 @@ const AddProductForm = () => {
     imgURL: '',
     link: '',
     rating: '',
-    title: ''
+    title: '',
+    tags: []
   });
   const [showLoader, setShowLoader] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState([]);
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
+  const [tags, setTags] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -30,8 +32,20 @@ const AddProductForm = () => {
       console.error("Error fetching products:", error);
     }
   };
-
+  const fetchTags = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "tags"));
+      const tagsData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setTags(tagsData);
+    } catch (error) {
+      console.error("Error fetching tags:", error);
+    }
+  };
   useEffect(() => {
+    fetchTags();
     fetchProducts();
   }, []);
 
@@ -42,7 +56,6 @@ const AddProductForm = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -67,7 +80,9 @@ const AddProductForm = () => {
             imgURL: photoURL,
             link: productData.link,
             rating: productData.rating,
-            title: productData.title
+            title: productData.title,
+            tags: productData.tags 
+
           });
           await updateDoc(docRef, { id: docRef.id });
           setProductData({
@@ -75,7 +90,9 @@ const AddProductForm = () => {
             imgURL: '',
             link: '',
             rating: '',
-            title: ''
+            title: '',
+            tags: []
+
           });
           setShowModal(false);
           fetchProducts();
@@ -104,11 +121,24 @@ const AddProductForm = () => {
       console.error("Error deleting product:", error);
     }
   };
+  const handleTagsChange = (e) => {
+    const { options } = e.target;
+    const selectedTags = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedTags.push(options[i].value);
+      }
+    }
+    setProductData(prevState => ({
+      ...prevState,
+      tags: selectedTags
+    }));
+  };
   return (
     <div>
-       <div>
-      <h2 className="text-2xl font-bold mb-4">All Products</h2>
-      <button onClick={() => setShowModal(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+       <div className='m-20'>
+      <h2 className="text-5xl font-bold mb-4 allura text-primary sticky top-20">All Products</h2>
+      <button onClick={() => setShowModal(true)} className="bg-blue-500 hover:bg-blue-700 text-primary bg-slate font-bold py-2 px-4 rounded mb-6">
         Add New Product
       </button>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -154,9 +184,11 @@ const AddProductForm = () => {
         </div>
       )}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded-lg">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-slate-600">
+          <div className="bg-white p-4 rounded-lg ">
             <h2 className="text-2xl font-bold mb-4">Add Product</h2>
+            <div className='flex items-end justify-end text-3xl'>            <button onClick={() => setShowModal(false)} className="mt-2 mr-2 text-red-600 hover:text-red-800 ">X</button>
+</div>
             <form onSubmit={handleSubmit} className="max-w-lg ">
               <div className="mb-4">
                 <label htmlFor="title" className="block mb-1">Title:</label>
@@ -171,6 +203,14 @@ const AddProductForm = () => {
                 <input type="file" id="imgFile" name="imgFile" accept="image/*" onChange={handlePhotoChange} className="w-full  px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500" />
               </div>
               <div className="mb-4">
+                <label htmlFor="tags" className="block mb-1">Tags:</label>
+                <select id="tags" name="tags" multiple value={productData.tags} onChange={handleTagsChange} className="w-full text-black px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                  {tags.map(tag => (
+                    <option key={tag.id} value={tag.name} className='text-black'>{tag.tag}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4 " >
                 <label htmlFor="link" className="block mb-1">Link:</label>
                 <input type="text" id="link" name="link" value={productData.link} onChange={handleChange} className="w-full px-3 py-2 border text-black rounded-lg focus:outline-none focus:border-blue-500" />
               </div>
@@ -178,9 +218,9 @@ const AddProductForm = () => {
                 <label htmlFor="rating" className="block mb-1">Rating:</label>
                 <input type="text" id="rating" name="rating" value={productData.rating} onChange={handleChange} className="w-full px-3 text-black py-2 border rounded-lg focus:outline-none focus:border-blue-500" />
               </div>
-              <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-lg focus:outline-none hover:bg-blue-600">Add Product</button>
+              <button type="submit" className="w-full py-2 bg-primary text-slate-500 rounded-lg focus:outline-none hover:bg-blue-600">Add Product</button>
             </form>
-            <button onClick={() => setShowModal(false)} className="absolute top-0 right-0 mt-2 mr-2 text-red-600 hover:text-red-800">&#10006;</button>
+      
           </div>
         </div>
       )}
