@@ -27,8 +27,8 @@ const Instagram = () => {
     if (typeof caption !== 'string') {
       return ''; 
     }
-    const lines = caption.split('\n'); 
-    return lines.slice(0, 2).join('\n'); 
+    const lines = caption; 
+    return lines; 
   };
   
 
