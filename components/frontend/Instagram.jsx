@@ -23,9 +23,8 @@ const Instagram = () => {
     fetchInstagramPhotos();
   }, []);
 
-  // Function to extract first two lines from the caption
   const extractFirstTwoLines = (caption) => {
-    return caption.split("\n").slice(0, 1).join("\n");
+    return caption;
   };
 
   return (

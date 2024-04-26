@@ -42,7 +42,6 @@ const AddProductForm = () => {
         },
         (error) => {
           console.error("Error uploading photo", error);
-          toast.error("Error adding lecture. Please try again.");
         },
         async () => {
           const photoURL = await getDownloadURL(uploadTask.snapshot.ref);
@@ -55,37 +54,30 @@ const AddProductForm = () => {
             rating: productData.rating,
             title: productData.title
           });
-          await updateDoc(docRef, { uid: docRef.id });
+          await updateDoc(docRef, { id: docRef.id });
+          setProductData({
+            description: '',
+            imgURL: '',
+            link: '',
+            price: '',
+            rating: '',
+            title: ''
+          });
+          console.log("Product added successfully!");
+
       
         }
       );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      console.log("Product added successfully!");
-      setProductData({
-        description: '',
-        imgURL: '',
-        link: '',
-        price: '',
-        rating: '',
-        title: ''
-      });
+      
     } catch (error) {
       console.error("Error adding product: ", error);
     }
+  };
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setProductData({ ...productData, imgURL: file });
   };
 
   return (
@@ -102,7 +94,7 @@ const AddProductForm = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="imgFile" className="block mb-1">Upload Image:</label>
-          <input type="file" id="imgFile" name="imgFile" accept="image/*" onChange={handleChange} className="w-full  px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500" />
+          <input type="file" id="imgFile" name="imgFile" accept="image/*" onChange={handlePhotoChange} className="w-full  px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500" />
         </div>
         <div className="mb-4">
           <label htmlFor="link" className="block mb-1">Link:</label>
