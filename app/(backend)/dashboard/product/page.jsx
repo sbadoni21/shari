@@ -11,7 +11,8 @@ const AddProductForm = () => {
     link: '',
     rating: '',
     title: '',
-    tags: []
+    tags: [],
+    categories: []
   });
   const [showLoader, setShowLoader] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -19,6 +20,8 @@ const AddProductForm = () => {
   const [products, setProducts] = useState([]);
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
   const [tags, setTags] = useState([]);
+  const [categories, setCategories] = useState([]);
+
 
   const fetchProducts = async () => {
     try {
@@ -44,9 +47,22 @@ const AddProductForm = () => {
       console.error("Error fetching tags:", error);
     }
   };
+  const fetchCategories = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "categories"));
+      const categoryData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setCategories(categoryData);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
   useEffect(() => {
     fetchTags();
     fetchProducts();
+    fetchCategories();
   }, []);
 
   const handleChange = (e) => {
@@ -81,8 +97,8 @@ const AddProductForm = () => {
             link: productData.link,
             rating: productData.rating,
             title: productData.title,
-            tags: productData.tags 
-
+            tags: productData.tags ,
+            categories: productData.categories 
           });
           await updateDoc(docRef, { id: docRef.id });
           setProductData({
@@ -91,8 +107,8 @@ const AddProductForm = () => {
             link: '',
             rating: '',
             title: '',
-            tags: []
-
+            tags: [],
+categories:[],
           });
           setShowModal(false);
           fetchProducts();
@@ -132,6 +148,19 @@ const AddProductForm = () => {
     setProductData(prevState => ({
       ...prevState,
       tags: selectedTags
+    }));
+  };
+  const handleCategoriesChange = (e) => {
+    const { options } = e.target;
+    const selectedCategories = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        selectedCategories.push(options[i].value);
+      }
+    }
+    setProductData(prevState => ({
+      ...prevState,
+      categories: selectedCategories
     }));
   };
   return (
@@ -207,6 +236,14 @@ const AddProductForm = () => {
                 <select id="tags" name="tags" multiple value={productData.tags} onChange={handleTagsChange} className="w-full text-black px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
                   {tags.map(tag => (
                     <option key={tag.id} value={tag.name} className='text-black'>{tag.tag}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label htmlFor="tags" className="block mb-1">Categories:</label>
+                <select id="categories" name="categories" multiple value={productData.categories} onChange={handleCategoriesChange} className="w-full text-black px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                  {categories.map(tag => (
+                    <option key={tag.id} value={tag.id} className='text-black'>{tag.category}</option>
                   ))}
                 </select>
               </div>

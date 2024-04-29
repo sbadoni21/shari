@@ -52,6 +52,8 @@ export default function RootLayout({ children }) {
 
   gtag('config', 'G-9J6HVY4E09');`}
         </Script>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3489691346477126"
+     crossorigin="anonymous"></Script>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-9J6HVY4E09"
