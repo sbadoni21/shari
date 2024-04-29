@@ -47,7 +47,8 @@ const Instagram = () => {
       </div>
       <Space16 />
       <Space16 />
-      <div className="flex flex-wrap justify-center gap-4 min-h-fit w-full mb-10">
+<div class="elfsight-app-45e4025a-100a-48c0-9bf6-d8f9095feda1" data-elfsight-app-lazy></div>
+      {/* <div className="flex flex-wrap justify-center gap-4 min-h-fit w-full mb-10">
         {showSmallScreen ? (
          <div className=' flex overflow-x-auto '>
             {photos.slice(0, 2).map((photo) => (
@@ -89,7 +90,7 @@ const Instagram = () => {
             </div>
           ))
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
