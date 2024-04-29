@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../../../firebase/firebase'; 
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc, where } from 'firebase/firestore';
 
 const AddProductForm = () => {
   const [productData, setProductData] = useState({
@@ -21,6 +21,8 @@ const AddProductForm = () => {
   const [deleteConfirmation, setDeleteConfirmation] = useState(null);
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [edit, setEdit] = useState(false);
+  const [editID, setEditID] = useState('');
 
 
   const fetchProducts = async () => {
@@ -65,6 +67,20 @@ const AddProductForm = () => {
     fetchCategories();
   }, []);
 
+const handleEdit = (id) => {
+  
+  const itemToEdit = products.find((item) => item.id == id)
+  setProductData(prevState => ({
+    id : itemToEdit.id,
+    ...itemToEdit
+  }));
+  setEditID(id)
+  setShowModal(true)
+  setEdit(true)
+};
+
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProductData(prevState => ({
@@ -75,6 +91,7 @@ const AddProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       const storageRef = ref(storage, `product_images/${Date.now()}`);
       const uploadTask = uploadBytesResumable(storageRef, productData.imgURL);
       uploadTask.on(
@@ -91,7 +108,10 @@ const AddProductForm = () => {
         async () => {
           const photoURL = await getDownloadURL(uploadTask.snapshot.ref);
           setShowLoader(false);
-          const docRef = await addDoc(collection(db, "product"), {
+          const docRef = collection(db, 'product');
+
+          if (!edit){
+          const docRef2 = await addDoc(docRef, {
             description: productData.description,
             imgURL: photoURL,
             link: productData.link,
@@ -100,7 +120,19 @@ const AddProductForm = () => {
             tags: productData.tags ,
             categories: productData.categories 
           });
-          await updateDoc(docRef, { id: docRef.id });
+          await updateDoc(docRef2, { id: docRef2.id });}
+          if (edit){
+            const itemRef= doc(docRef,editID)
+   await updateDoc(itemRef,{
+              description: productData.description,
+              imgURL: photoURL,
+              link: productData.link,
+              rating: productData.rating,
+              title: productData.title,
+              tags: productData.tags ,
+              categories: productData.categories 
+            });
+  }
           setProductData({
             description: '',
             imgURL: '',
@@ -179,7 +211,7 @@ categories:[],
             <p className="mt-2">Rating: {product.rating}</p>
             <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{product.link}</a>
             <div className="flex justify-end mt-4">
-              <button className="mr-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => setShowModal(true)}>
+              <button className="mr-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleEdit(product.id)}>
                 Edit
               </button>
               <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"               onClick={() => confirmDelete(product.id)} 
