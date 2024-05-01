@@ -1,5 +1,5 @@
-'use client'
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 
 const HeroSection = () => {
   const [showContent, setShowContent] = useState(false);
@@ -15,21 +15,19 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setshowSmallScreen(window.innerWidth < 768); 
+      setshowSmallScreen(window.innerWidth < 768);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <>
       {!showSmallScreen && (
-        <div className="flex bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% justify-center text-white items-center h-screen text-9xl w-full"
-      
-        >
+        <div className="flex bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% justify-center text-white items-center h-screen text-9xl w-full">
           <p
             style={{ opacity: showContent ? 1 : 0 }}
             className="allura text-[400px] transition-opacity duration-1000 ease-in"
@@ -44,10 +42,7 @@ const HeroSection = () => {
               >
                 ELF
               </p>
-              <p
-                style={{ opacity: showContent ? 1 : 0 }}
-                className="w-4"
-              ></p>
+              <p style={{ opacity: showContent ? 1 : 0 }} className="w-4"></p>
               <p
                 style={{ opacity: showContent ? 1 : 0 }}
                 className="text-9xl allura transition-opacity duration-1000 ease-in delay-500"
@@ -82,37 +77,46 @@ const HeroSection = () => {
                 RI
               </p>
             </div>
-          </div>
+         
+          </div> 
+          <div className="flex flex-row absolute top-[700px] gap-20  text-3xl text-center ">
+              <div className="w-48 h-20 bg-black text-white rounded-full flex items-center justify-center">
+                SKINCARE
+              </div>
+              <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
+                MAKEUP
+              </div>
+
+              <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
+                FASHION
+              </div>
+            </div>
         </div>
       )}
-      {
-        showSmallScreen &&(
-          <div className=" text-white items-center  text-8xl w-full"
+      {showSmallScreen && (
+        <div
+          className=" text-white items-center  text-8xl w-full"
           style={{
             backgroundImage: 'url("/bgmain.png")',
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          
           <div className=" pt-40 pb-48 flex flex-col items-center justify-center ">
             <div className="flex justify-center items-center  align-bottom">
-            <p
-            style={{ opacity: showContent ? 1 : 0 }}
-            className="allura  transition-opacity duration-1000 ease-in "
-          >
-            S
-          </p>
+              <p
+                style={{ opacity: showContent ? 1 : 0 }}
+                className="allura  transition-opacity duration-1000 ease-in "
+              >
+                S
+              </p>
               <p
                 style={{ opacity: showContent ? 1 : 0 }}
                 className="allura  transition-opacity duration-1000 ease-in delay-300 "
               >
                 elf
               </p>
-              <p
-                style={{ opacity: showContent ? 1 : 0 }}
-                className="w-4"
-              ></p>
+              <p style={{ opacity: showContent ? 1 : 0 }} className="w-4"></p>
               <p
                 style={{ opacity: showContent ? 1 : 0 }}
                 className=" allura transition-opacity duration-1000 ease-in delay-500"
@@ -122,13 +126,13 @@ const HeroSection = () => {
             </div>
 
             <div
-                style={{ opacity: showContent ? 1 : 0 }}
-                className="allura   pr-4 text-center items-center  transition-opacity duration-1000 ease-in delay-700"
-              >
-                By
-              </div>
-              <div className="flex items-end justify-start align-bottom">
-           <p
+              style={{ opacity: showContent ? 1 : 0 }}
+              className="allura   pr-4 text-center items-center  transition-opacity duration-1000 ease-in delay-700"
+            >
+              By
+            </div>
+            <div className="flex items-end justify-start align-bottom">
+              <p
                 style={{ opacity: showContent ? 1 : 0 }}
                 className="londrinaoutline  pr-4   transition-opacity duration-1000 ease-in delay-1000 font-extrabold"
               >
@@ -148,10 +152,8 @@ const HeroSection = () => {
               </p>
             </div>
           </div>
-       
         </div>
-        )
-      }
+      )}
     </>
   );
 };
