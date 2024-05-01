@@ -10,6 +10,8 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchedProducts, setSearchedProducts] = useState([]);
 
   useEffect(() => {
     const fetchCategoryDetails = async () => {
@@ -51,12 +53,62 @@ const ProductsPage = () => {
 
     fetchCategoryDetails();
   }, []);
+  const handleSearch = () => {
+    const searchedProducts = allProducts.filter(product => {
+      const title = product.title.toLowerCase();
+      return title.includes(searchQuery.toLowerCase());
+    });
+    setSearchedProducts(searchedProducts);
+  };
+  const clearSearchQuery = () => {
+    setSearchQuery('');
+    setSearchedProducts([]);
+  };
+
   return (
-    <div className="bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% ">
+    <div className="bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% pt-20 ">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div>
+          <div className="flex justify-center ">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search products..."
+          className="border border-gray-300 rounded-md px-4 py-2 mr-2"
+        />
+        <button
+          onClick={handleSearch}
+          className="bg-slate text-white font-bold rounded-md px-4 py-2"
+        >
+          Search
+        </button>
+        {searchQuery && (
+          <button
+            onClick={clearSearchQuery}
+            className="bg-red-500 hover:bg-red-600 text-white font-bold rounded-md px-4 py-2 ml-2"
+          >
+            X
+          </button>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pl-20 pr-20">
+        {searchedProducts.map(product => (
+          <Link key={product.id} href={`/products/${product.id}`}>
+            <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden">
+              <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-3/4 object-cover" />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
+                <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
         {products.map(category => (
   category.products && category.products.length > 0 && (
     <div key={category.id} className=' pt-20 '>
