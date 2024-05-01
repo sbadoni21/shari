@@ -9,7 +9,6 @@ const HomePage = () => {
   return (
     <div className="">
         <ProductsPage/>
-        <Footer/>
     </div>
   );
 };
