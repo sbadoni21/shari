@@ -4,6 +4,7 @@ import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
+import "react-multi-carousel/lib/styles.css";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -44,12 +45,15 @@ const ProductsPage = () => {
         }
      console.log(productsData);
         setProducts(productsData);
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);
         setLoading(false);
       }
     };
+
+
 
     fetchCategoryDetails();
   }, []);
@@ -66,7 +70,7 @@ const ProductsPage = () => {
     setClicked(false);
     setSearchedProducts([]);
   };
-
+  
 
   return (
     <div className="bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% pt-20 ">
@@ -112,16 +116,18 @@ const ProductsPage = () => {
           </Link>
         ))}
       </div> : <div></div> )} 
+      
         {products.map(category => (
   category.products && category.products.length > 0 && (
     <div key={category.id} className=' pt-20 '>
       <h3 className="text-6xl allura mb-4 text-white pl-20">{category.category.category}</h3>
       <Carousel
         key={category.id} 
+        
         draggable={true}
         swipeable={true}
         infinite={true}
-        autoPlay={true}
+         autoPlay={true}
         partialVisible={false}
         autoPlaySpeed={3000}
         centerMode={true}

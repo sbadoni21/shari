@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Loader from "./Loading";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { FaRegHeart } from "react-icons/fa";
 import Space16 from "../backend/Space16";
 import { getDocs, query, collection, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
@@ -51,7 +50,10 @@ const HomeProductSection = () => {
   };
 
   return (
-    <div style={{ position: "relative" }} className="md:h-full w-full  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  overflow-hidden">
+    <div
+      style={{ position: "relative" }}
+      className="md:h-full w-full  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  overflow-hidden"
+    >
       <div className="flex items-start justify-start gap-4 p-4 md:pl-24">
         <div className="text-4xl  md:text-6xl allura text-white">
           Best Products for you
@@ -85,11 +87,11 @@ const HomeProductSection = () => {
           keyBoardControl={true}
           transitionDuration={500}
           removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-          className='pb-10'
-          >
+          className="pb-10"
+        >
           {products.map((item, index) => (
             <Link key={index} href={`/products/${item.id}`}>
-              <div className="shadow-xl shadow-gray-700 rounded-2xl overflow-hidden  mx-4 my-6 flex-col  md:h-[460px] bg-black text-white justify-between">
+              <div className="shadow-xl shadow-gray-700 rounded-2xl overflow-hidden  mx-4 my-6 flex-col  montserrat_Alternates md:h-[460px] bg-black text-white justify-between">
                 <img
                   src={item.imgURL}
                   alt={`Image`}
@@ -110,13 +112,14 @@ const HomeProductSection = () => {
         </Carousel>
       )}
 
-<div className=" flex justify-center items-center pb-2 "> <Link href="/products" className="">
+      <div className=" flex justify-center items-center pb-2 ">
+        {" "}
+        <Link href="/products" className="">
           <div className=" pt-3 text-2xl allura bg-gradient-to-r shadow-2xl shadow-gray-600 from-[#E499B8] from-10% to-black to-95% text-white p-16 pb-2 pr-4 pl-4 rounded-3xl bg-pink-300">
             See all...
           </div>
-        </Link></div>
-       
-
+        </Link>
+      </div>
     </div>
   );
 };

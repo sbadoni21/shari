@@ -6,6 +6,7 @@ import {
   Londrina_Outline,
   Lemonada,
   Montserrat_Alternates,
+  Libre_Franklin
 } from "next/font/google";
 import TopNavBar from "@/components/frontend/TopNavBar";
 import Script from "next/script";
@@ -18,6 +19,11 @@ const montserrat_Alternates = Montserrat_Alternates({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-Montserrat_Alternates",
+});
+const libre_Franklin = Libre_Franklin({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-Libre_Franklin",
 });
 const lemonada = Lemonada({
   subsets: ["latin"],
