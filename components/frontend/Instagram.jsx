@@ -39,10 +39,10 @@ const Instagram = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="flex-col justify-center items-center bg-gradient-to-t from-black from-10% to-[#E499B8] md:pl-20 md:pr-20 to-95% ">
       <Space16 />
       <Space16 />
-      <div className="text-6xl allura text-[#FDCCE0]">
+      <div className="pl-6 md:pl-0 text-4xl md:text-6xl allura text-[#FDCCE0]">
         Latest Instagram Posts
       </div>
       <Space16 />

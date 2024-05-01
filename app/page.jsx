@@ -24,8 +24,7 @@ const HomePage = () => {
     <div className="">
       <TopNavBar />
       <HeroSection />
-      <Space16 />
-      <Space16 />
+
       <HomeProductSection />
       <BlogSection/>
       <Instagram />

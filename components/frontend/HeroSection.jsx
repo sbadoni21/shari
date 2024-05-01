@@ -27,12 +27,8 @@ const HeroSection = () => {
   return (
     <>
       {!showSmallScreen && (
-        <div className="flex justify-center text-white items-center h-screen text-9xl w-full"
-          style={{
-            backgroundImage: 'url("/bgmain.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <div className="flex bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% justify-center text-white items-center h-screen text-9xl w-full"
+      
         >
           <p
             style={{ opacity: showContent ? 1 : 0 }}
@@ -99,7 +95,7 @@ const HeroSection = () => {
           }}
         >
           
-          <div className=" pt-48 pb-48 flex flex-col items-center justify-center ">
+          <div className=" pt-40 pb-48 flex flex-col items-center justify-center ">
             <div className="flex justify-center items-center  align-bottom">
             <p
             style={{ opacity: showContent ? 1 : 0 }}
@@ -111,7 +107,7 @@ const HeroSection = () => {
                 style={{ opacity: showContent ? 1 : 0 }}
                 className="allura  transition-opacity duration-1000 ease-in delay-300 "
               >
-                ELF
+                elf
               </p>
               <p
                 style={{ opacity: showContent ? 1 : 0 }}
@@ -134,7 +130,7 @@ const HeroSection = () => {
               <div className="flex items-end justify-start align-bottom">
            <p
                 style={{ opacity: showContent ? 1 : 0 }}
-                className="londrinaoutline  pr-4   transition-opacity duration-1000 ease-in delay-1000 font-bold"
+                className="londrinaoutline  pr-4   transition-opacity duration-1000 ease-in delay-1000 font-extrabold"
               >
                 SHA
               </p>
@@ -146,7 +142,7 @@ const HeroSection = () => {
               </p>
               <p
                 style={{ opacity: showContent ? 1 : 0 }}
-                className="londrinaoutline  transition-opacity duration-1000 ease-in delay-1000 font-bold"
+                className="londrinaoutline  transition-opacity duration-1000 ease-in delay-1000 font-extrabold"
               >
                 RI
               </p>

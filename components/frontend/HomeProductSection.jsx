@@ -35,8 +35,8 @@ const HomeProductSection = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3,
+      items: 4,
+      slidesToSlide: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -51,12 +51,11 @@ const HomeProductSection = () => {
   };
 
   return (
-    <div style={{ position: "relative" }} className="h-full w-full">
+    <div style={{ position: "relative" }} className="md:h-full w-full  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% ">
       <div className="flex items-start justify-start gap-4 p-4 md:pl-24">
-        <div className="text-6xl allura text-[#FDCCE0]">
+        <div className="text-4xl  md:text-6xl allura text-white">
           Best Products for you
         </div>
-        
       </div>
       <Space16 />
       <Space16 />
@@ -80,7 +79,7 @@ const HomeProductSection = () => {
           swipeable={true}
           infinite={true}
           autoPlay={true}
-          partialVisible ={false}
+          partialVisible={false}
           autoPlaySpeed={3000}
           centerMode={true}
           keyBoardControl={true}
@@ -88,27 +87,22 @@ const HomeProductSection = () => {
           removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
           containerClass="carousel-container"
           itemClass="carousel-item"
-          className="md:ml-20 md:mr-20"
-        >
+          className='pb-10'
+          >
           {products.map((item, index) => (
-            <Link key={index} 
-              href={`/products/${item.id}`}
-              className="shadow-lg rounded-2xl"
-            >
-              <div className="shadow-lg shadow-slate-300 rounded-2xl overflow-hidden bg-slate-100  mx-4 my-6 flex-col h-60 md:h-96 md:w-72">
+            <Link key={index} href={`/products/${item.id}`}>
+              <div className="shadow-xl shadow-gray-700 rounded-2xl overflow-hidden  mx-4 my-6 flex-col  md:h-[460px] bg-black text-white justify-between">
                 <img
                   src={item.imgURL}
                   alt={`Image`}
                   key={item.imgURL.key}
-                  className="h-4/6 object-cover"
+                  className="h-4/6 w-full object-center object-cover"
                 />
-                <div className="text-start ml-2 mt-2 ">
-                  <p className="text-base text-wrap text-slate-700">
-                    {item.title}
-                  </p>
+                <div className="text-start m-4 text text-sm  md:text-base ">
+                  <p className="text-slate-700">{item.title}</p>
+                  <Space16 />
 
-      
-                  <p className="text-base text-wrap text-slate-700">
+                  <p className="text-sm  md:text-base text-slate-700 text-primary">
                     Rating : {item.rating}
                   </p>
                 </div>
@@ -118,13 +112,13 @@ const HomeProductSection = () => {
         </Carousel>
       )}
 
-      <div className="flex justify-center items-center">
-        <Link href="/products" className="text-2xl allura text-white p-16">
-          <div className=" flex justify-center items-center pt-3  pb-2 pr-4 pl-4 h-12 rounded-3xl bg-pink-300">
+<div className=" flex justify-center items-center pb-2 "> <Link href="/products" className="">
+          <div className=" pt-3 text-2xl allura bg-gradient-to-r shadow-2xl shadow-gray-600 from-[#E499B8] from-10% to-black to-95% text-white p-16 pb-2 pr-4 pl-4 rounded-3xl bg-pink-300">
             See all...
           </div>
-        </Link>
-      </div>
+        </Link></div>
+       
+
     </div>
   );
 };

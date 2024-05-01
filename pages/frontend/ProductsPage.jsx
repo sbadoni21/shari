@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
 import Link from 'next/link';
+import Carousel from 'react-multi-carousel';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -43,32 +44,61 @@ const ProductsPage = () => {
     fetchCategoryDetails();
   }, []);
   return (
-    <div className="container mx-auto m-20">
+    <div className="bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% ">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div>
-          {products.map(category => (
-            (category.products.length > 0) && (
-              <div key={category.id}>
-                <h3 className="text-6xl  allura  mb-4">{category.category.category}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {category.products.map(product => (
-                    <Link key={product.id} href={`/products/${product.id}`}>
-                      <div className="bg-slate-100 rounded-lg shadow-lg shadow-slate-300 overflow-hidden m-4">
-                        <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-48 object-cover" />
-                        <div className="p-4">
-                          <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
-                          <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
-                          <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+        {products.map(category => (
+  category.products && category.products.length > 0 && (
+    <div key={category.id} className=' pt-20 '>
+      <h3 className="text-6xl allura mb-4 text-white pl-20">{category.category.category}</h3>
+      <Carousel
+        key={category.id} 
+        draggable={true}
+        swipeable={true}
+        infinite={true}
+        autoPlay={true}
+        partialVisible={false}
+        autoPlaySpeed={3000}
+        centerMode={true}
+        keyBoardControl={true}
+        transitionDuration={500}
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+        className='pb-10'
+        responsive={{
+          desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 4,
+          },
+          tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+          },
+          mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+          },
+        }}
+      >
+        {category.products.map(product => (
+          <Link key={product.id} href={`/products/${product.id}`}>
+            <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden m-4">
+              <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-3/4 object-cover" />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
+                <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
               </div>
-            )
-          ))}
+            </div>
+          </Link>
+        ))}
+      </Carousel>
+    </div>
+  )
+))}
+
+
         </div>
       )}
     </div>

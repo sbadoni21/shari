@@ -32,9 +32,9 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <div className="w-full h-1/2 p-5 md:p-20 bg-primary text-pink-500 text-center lemonada">
-      <div className="flex items-center justify-start gap-4  md:pl-24">
-        <div className="text-6xl allura text-white">Routines</div>
+    <div className="w-full h-1/2 p-5 md:p-20 bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% text-pink-500 text-center lemonada">
+      <div className="flex items-center justify-start gap-4  ">
+        <div className=" text-4xl md:text-6xl allura text-white">Routines</div>
       </div>
       <Space16 />
       <Space16 />

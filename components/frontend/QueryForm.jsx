@@ -40,7 +40,7 @@ const QueryForm = () => {
   };
 
   return (
-    <div className='flex flex-1 justify-evenly items-center pt-40 pb-40'>
+    <div className='flex flex-1 justify-evenly  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  items-center pt-40 pb-40 text-white'>
       <div>
         <h3 className="text-9xl allura">Contact Us</h3>
       </div>
@@ -51,7 +51,7 @@ const QueryForm = () => {
             <p>We ll get back to you as soon as possible.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="w-full max-w-lg">
+          <form onSubmit={handleSubmit} className="w-full text-lg max-w-lg bg-white p-20 rounded-3xl allura">
             <div className="mb-4">
               <label htmlFor="name" className="block mb-1">Name:</label>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-96 px-3 py-2 text-black border rounded-lg focus:outline-none focus:border-blue-500" />
@@ -64,7 +64,7 @@ const QueryForm = () => {
               <label htmlFor="message" className="block mb-1">Message:</label>
               <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="w-full text-black px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500" />
             </div>
-            <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-lg focus:outline-none hover:bg-blue-600">Submit</button>
+            <button type="submit" className="w-full bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  py-2 bg-blue-500 text-white rounded-lg focus:outline-none hover:bg-blue-600">Submit</button>
           </form>
         )}
       </div>

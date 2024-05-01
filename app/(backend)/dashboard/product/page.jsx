@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { db, storage } from "../../../../firebase/firebase";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import {
   addDoc,
   collection,
@@ -15,7 +15,7 @@ import {
 const AddProductForm = () => {
   const [productData, setProductData] = useState({
     description: "",
-    imgURL: "",
+    imgURL: null,
     link: "",
     rating: "",
     title: "",
@@ -26,10 +26,14 @@ const AddProductForm = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState([]);
-  const [deleteConfirmation, setDeleteConfirmation] = useState(null);
+  const [deleteConfirmation, setDeleteConfirmation] = useState({
+    id:"",
+    url:""
+  });
   const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [upload, setUpload] = useState(false);
   const [editID, setEditID] = useState("");
 
   const fetchProducts = async () => {
@@ -80,6 +84,7 @@ const AddProductForm = () => {
       id: itemToEdit.id,
       ...itemToEdit,
     }));
+
     setEditID(id);
     setShowModal(true);
     setEdit(true);
@@ -109,33 +114,44 @@ const AddProductForm = () => {
           console.error("Error uploading photo", error);
         },
         async () => {
-          const photoURL = await getDownloadURL(uploadTask.snapshot.ref);
+         const photoURL= await getDownloadURL(uploadTask.snapshot.ref);
           setShowLoader(false);
           const docRef = collection(db, "product");
 
-          if (!edit) {
+          if (edit) {
+            const itemRef = doc(docRef, editID);
+            if(upload) {
+            await updateDoc(itemRef, {
+              description: productData.description,
+              imgURL:  photoURL,
+              link: productData.link,
+              rating: productData.rating,
+              title: productData.title,
+              tags: productData.tags,                                                     
+              categories: productData.categories,
+            });
+            setUpload(false);
+            } else{
+              await updateDoc(itemRef, {
+                description: productData.description,
+                link: productData.link,
+                rating: productData.rating,
+                title: productData.title,
+                tags: productData.tags,                                                     
+                categories: productData.categories,
+              });
+            }       
+          } else {
             const docRef2 = await addDoc(docRef, {
               description: productData.description,
               imgURL: photoURL,
               link: productData.link,
-              rating: productData.rating,
+                rating: productData.rating,
               title: productData.title,
               tags: productData.tags,
               categories: productData.categories,
             });
             await updateDoc(docRef2, { id: docRef2.id });
-          }
-          if (edit) {
-            const itemRef = doc(docRef, editID);
-            await updateDoc(itemRef, {
-              description: productData.description,
-              imgURL: photoURL,
-              link: productData.link,
-              rating: productData.rating,
-              title: productData.title,
-              tags: productData.tags,
-              categories: productData.categories,
-            });
           }
           setProductData({
             description: "",
@@ -156,23 +172,33 @@ const AddProductForm = () => {
       console.error("Error adding product: ", error);
     }
   };
-  const confirmDelete = (tagId) => {
-    setDeleteConfirmation(tagId);
+  const confirmDelete = (id, imgURL) => {
+    setDeleteConfirmation({id, url:imgURL});
   };
   const handlePhotoChange = (e) => {
+    setUpload(true);
     const file = e.target.files[0];
     setProductData({ ...productData, imgURL: file });
   };
-  const handleDelete = async (productId) => {
+  const handleDelete = async ({id, url}) => {   
     try {
-      await deleteDoc(doc(db, "product", productId));
-      setProducts(products.filter((product) => product.id !== productId));
-      setDeleteConfirmation(null);
-      console.log("Product deleted successfully!");
+
+      const storageRef = ref(storage, url);
+      await deleteObject(storageRef);
+      const photoRef = doc(db, "product", id);
+      await deleteDoc(photoRef);
+      // toast.success("Deleted Successfully !!!");
+      setDeleteConfirmation({
+        id:"",
+        url:""
+      });
+      fetchProducts();
     } catch (error) {
-      console.error("Error deleting product:", error);
+      console.error("Error deleting:", error);
+      // toast.error("Error deleting. Please try again.");
     }
   };
+
 const handleTagsChange = (e) => {
   const { name, checked } = e.target;
   if (checked) {
@@ -243,7 +269,7 @@ const handleCategoriesChange = (e) => {
                 </button>
                 <button
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => confirmDelete(product.id)}
+                  onClick={() => confirmDelete(product.id, product.imgURL)}
                 >
                   Delete
                 </button>
@@ -252,7 +278,7 @@ const handleCategoriesChange = (e) => {
           ))}
         </div>
       </div>
-      {deleteConfirmation && (
+      {deleteConfirmation.id != "" && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-primary text-gray-500 p-4 rounded-lg">
             <p className="text-lg">Are you sure you want to delete this tag?</p>
@@ -264,7 +290,10 @@ const handleCategoriesChange = (e) => {
                 Yes
               </button>
               <button
-                onClick={() => setDeleteConfirmation(null)}
+                onClick={() => setDeleteConfirmation({
+                  id:"",
+                  url:""
+                })}
                 className="bg-gray-300 text-gray-900 py-2 px-4 rounded-lg"
               >
                 Cancel
