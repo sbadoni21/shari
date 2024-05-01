@@ -30,7 +30,7 @@ const TopNavBar = () => {
           <div className="fixed top-0 flex justify-center gap-16 items-center pt-4 pb-4 pr-10 pl-10 bg-transparent w-4/5 rounded-full backdrop-filter backdrop-blur-2xl h-16 z-10">
             <Link href="/">Home</Link>
             <Link href="/products">Products</Link>
-            <Link href="/aboutus">About Us</Link>
+            {/* <Link href="/aboutus">About Us</Link> */}
             {/* <Link href="/blogs">Blogs</Link> */}
             <Link href="/contact">Contact us</Link>
 
@@ -58,9 +58,9 @@ const TopNavBar = () => {
             <Link onClick={handleMenuClick} href="/products">
               Products
             </Link>
-            <Link onClick={handleMenuClick} href="/aboutus">
+            {/* <Link onClick={handleMenuClick} href="/aboutus">
               About Us
-            </Link>
+            </Link> */}
             <Link onClick={handleMenuClick} href="/contact">
               Contact us
             </Link>
