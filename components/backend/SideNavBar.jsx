@@ -44,10 +44,10 @@ export const SideNavBar = () => {
             <span>Categories</span>
           </div>
         </Link>
-        <Link href="#">
+        <Link href="/dashboard/blogs">
           <div className="flex items-center px-4 py-2  hover:text-white  hover:bg-slate">
             <GiFireplace className="mr-2" /> 
-            <span>Markets</span>
+            <span>Blogs</span>
           </div>
         </Link>
         <Link href="#">

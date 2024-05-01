@@ -58,24 +58,6 @@ const ProductDetailsPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
-
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -87,21 +69,20 @@ const ProductDetailsPage = () => {
   }, []);
   return (
     <>
-      <TopNavBar />
-      <div className="m-20">
-        <div className="bg-gray-100 rounded-3xl">
+      <div className="pl-6 bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% pr-6 pt-20 md:p-20">
+        <div className="bg-gray-100 rounded-3xl ">
           {routineData ? (
             <div>
-              <div className="flex gap-20 text-start justify-start ">
+              <div className=" flex-col  md:gap-20 text-start pb-20 md:pb-0 justify-start ">
                 {" "}
                 <img
                   src={routineData.imgURL}
                   alt="Routine Image"
                   className="h-96 w-96 rounded-3xl"
                 />
-                <div className="flex flex-col gap-4">
+                <div className="flex p-2 flex-col gap-4">
             
-                  <div className="text-3xl text-black montserrat_Alternates">{routineData.title}</div>
+                  <h3 className="text-3xl text-black montserrat_Alternates">{routineData.title}</h3>
                   <div className="text-sm text-slate-800 montserrat_Alternates">{routineData.description}</div>
                   <div className="text-sm text-slate-600" >Rating : {routineData.rating}</div>
                   <div className="flex ">
@@ -118,7 +99,6 @@ const ProductDetailsPage = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 };
