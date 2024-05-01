@@ -79,7 +79,7 @@ const HeroSection = () => {
             </div>
          
           </div> 
-          <div className="flex flex-row absolute top-[700px] gap-20  text-3xl text-center ">
+          <div className="flex flex-row absolute  top-[700px] gap-20  text-3xl text-center ">
               <div className="w-48 h-20 bg-black text-white rounded-full flex items-center justify-center">
                 SKINCARE
               </div>
@@ -95,12 +95,8 @@ const HeroSection = () => {
       )}
       {showSmallScreen && (
         <div
-          className=" text-white items-center  text-8xl w-full"
-          style={{
-            backgroundImage: 'url("/bgmain.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          className=" text-white items-center bg-gradient-to-t from-[#E499B8] from-10% to-black to-95%  text-8xl w-full "
+          
         >
           <div className=" pt-40 pb-48 flex flex-col items-center justify-center ">
             <div className="flex justify-center items-center  align-bottom">

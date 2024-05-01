@@ -1,6 +1,8 @@
-'use client'
+"use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { IoMdMenu } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 
 const TopNavBar = () => {
   const [showMenuButton, setShowMenuButton] = useState(false);
@@ -8,17 +10,17 @@ const TopNavBar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setShowMenuButton(window.innerWidth < 768); 
+      setShowMenuButton(window.innerWidth < 768);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const handleMenuClick = () => {
-    setShowMenu(prevState => !prevState); 
+    setShowMenu((prevState) => !prevState);
   };
 
   return (
@@ -35,20 +37,31 @@ const TopNavBar = () => {
       )}
 
       {showMenuButton && (
-        <div className="flex justify-center items-center bg-primary">
-          <button onClick={handleMenuClick} className="bg-primary hover:bg-blue-700 text-gray-500 allura text-5xl font-bold py-2 px-4 rounded">
-            {showMenu ? "x" : "Menu"}
+        <div className="flex fixed justify-center items-center ">
+          <button
+            onClick={handleMenuClick}
+            className="hover:bg-blue-700 text-gray-500 allura text-5xl font-bold py-2 px-4 rounded"
+          >
+            {showMenu ? <RxCross1 /> : <IoMdMenu />}
           </button>
         </div>
       )}
 
       {showMenu && (
-        <div className="flex delay-1000 transition-transform  justify-center items-center text-5xl  bg-primary  h-screen ">
+        <div className="flex delay-1000 transition-transform  justify-center items-center text-5xl bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  h-screen text-white ">
           <div className="flex flex-col  h-screen justify-center gap-20  allura  items-center">
-          <Link onClick={handleMenuClick} href="/">Home</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/aboutus">About Us</Link>
-            <Link href="/contact">Contact us</Link>
+            <Link onClick={handleMenuClick} href="/">
+              Home
+            </Link>
+            <Link onClick={handleMenuClick} href="/products">
+              Products
+            </Link>
+            <Link onClick={handleMenuClick} href="/aboutus">
+              About Us
+            </Link>
+            <Link onClick={handleMenuClick} href="/contact">
+              Contact us
+            </Link>
           </div>
         </div>
       )}

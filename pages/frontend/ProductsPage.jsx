@@ -12,7 +12,7 @@ const ProductsPage = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchedProducts, setSearchedProducts] = useState([]);
-
+  const [clicked, setClicked] = useState(false);
   useEffect(() => {
     const fetchCategoryDetails = async () => {
       try {
@@ -59,11 +59,14 @@ const ProductsPage = () => {
       return title.includes(searchQuery.toLowerCase());
     });
     setSearchedProducts(searchedProducts);
+    setClicked(true);
   };
   const clearSearchQuery = () => {
     setSearchQuery('');
+    setClicked(false);
     setSearchedProducts([]);
   };
+
 
   return (
     <div className="bg-gradient-to-t from-black from-10% to-[#E499B8] to-95% pt-20 ">
@@ -95,20 +98,20 @@ const ProductsPage = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pl-20 pr-20">
+     {(clicked ? <div className="pt-4 flex overflow-x-scroll gap-4 pl-20 pr-20">
         {searchedProducts.map(product => (
           <Link key={product.id} href={`/products/${product.id}`}>
-            <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden">
+            <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden w-48 h-72">
               <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-3/4 object-cover" />
               <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                <h2 className="text-lg font-semibold mb-2">{product.title.toString().slice(0,10)}</h2>
                 <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
                 <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
               </div>
             </div>
           </Link>
         ))}
-      </div>
+      </div> : <div></div> )} 
         {products.map(category => (
   category.products && category.products.length > 0 && (
     <div key={category.id} className=' pt-20 '>
@@ -146,7 +149,7 @@ const ProductsPage = () => {
             <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden m-4">
               <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-3/4 object-cover" />
               <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                <h2 className="text-lg font-semibold mb-2">{product.title.toString().slice(0,25)}....</h2>
                 <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
                 <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
               </div>
@@ -190,7 +193,7 @@ const ProductsPage = () => {
             <div className="bg-slate-100 rounded-lg bg-black text-white shadow-2xl shadow-gray-400 overflow-hidden m-4">
               <img src={product.imgURL} key={product.id} alt={product.title} className="w-full h-3/4 object-cover" />
               <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                <h2 className="text-lg font-semibold mb-2">{product.title.toString().slice(0,25)}</h2>
                 <p className="text-gray-800 mb-2">Rating: {product.rating}</p>
                 <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Details</a>
               </div>

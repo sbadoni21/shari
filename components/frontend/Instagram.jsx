@@ -42,12 +42,14 @@ const Instagram = () => {
     <div className="flex-col justify-center items-center bg-gradient-to-t from-black from-10% to-[#E499B8] md:pl-20 md:pr-20 to-95% ">
       <Space16 />
       <Space16 />
-      <div className="pl-6 md:pl-0 text-4xl md:text-6xl allura text-[#FDCCE0]">
+      <div className="pl-6 md:pl-0 text-4xl md:text-6xl allura text-white">
         Latest Instagram Posts
       </div>
       <Space16 />
       <Space16 />
-<div className="elfsight-app-45e4025a-100a-48c0-9bf6-d8f9095feda1" data-elfsight-app-lazy></div>
+
+
+<div class="elfsight-app-45e4025a-100a-48c0-9bf6-d8f9095feda1" data-elfsight-app-lazy></div>
       {/* <div className="flex flex-wrap justify-center gap-4 min-h-fit w-full mb-10">
         {showSmallScreen ? (
          <div className=' flex overflow-x-auto '>

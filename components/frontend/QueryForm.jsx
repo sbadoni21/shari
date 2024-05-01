@@ -40,18 +40,18 @@ const QueryForm = () => {
   };
 
   return (
-    <div className='flex flex-1 justify-evenly  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  items-center pt-40 pb-40 text-white'>
+    <div className='flex-col  md:flex-row flex-1 justify-evenly  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  items-center pt-40 pb-40 text-white'>
       <div>
-        <h3 className="text-9xl allura">Contact Us</h3>
+        <h3 className="text-4xl md:text-9xl pl-6 allura ">Contact Us</h3>
       </div>
-      <div className="flex  flex-col items-center justify-center text-black">
+      <div className="flex    flex-col items-center justify-center text-black">
         {submitted ? (
           <div className=" flex-col text-center">
             <h3 className="text-3xl font-bold mb-4">Thank you for your message!</h3>
             <p>We ll get back to you as soon as possible.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="w-full text-lg max-w-lg bg-white p-20 rounded-3xl allura">
+          <form onSubmit={handleSubmit} className="w-full text-lg max-w-lg bg-white p-3 md:p-20 rounded-3xl allura">
             <div className="mb-4">
               <label htmlFor="name" className="block mb-1">Name:</label>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-96 px-3 py-2 text-black border rounded-lg focus:outline-none focus:border-blue-500" />
