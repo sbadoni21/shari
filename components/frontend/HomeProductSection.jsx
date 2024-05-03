@@ -54,11 +54,11 @@ const HomeProductSection = () => {
       style={{ position: "relative" }}
       className="md:h-full w-full  bg-gradient-to-t from-black from-10% to-[#E499B8] to-95%  overflow-hidden"
     >
-      <div className="flex items-start justify-start gap-4 p-4 md:pl-24">
-        <div className="text-4xl  md:text-6xl allura text-white">
-          Best Products for you
-        </div>
+     <div className="flex items-start justify-start gap-4 p-4 md:pl-24">
+      <div className="text-4xl md:text-6xl allura text-white transition-opacity duration-1000 opacity-100 hover:opacity-50">
+        Best Products for you
       </div>
+    </div>
       <Space16 />
       <Space16 />
       {loading && (

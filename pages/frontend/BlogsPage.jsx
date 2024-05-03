@@ -57,10 +57,10 @@ const BlogsPage = () => {
           <></>
         ) : (
           <>
-            <p className="text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 ">
+            <p className="text-4xl md:text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3 ">
               {routineData.title}
             </p>
-            <p className="text-6xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 ">
+            <p className="text-4xl md:text-6xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 p-3 ">
               {routineData.description}
             </p>
           </>
