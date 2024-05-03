@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
-import { getDocs, query, collection, orderBy } from 'firebase/firestore';
-import { db } from '../../firebase/firebase'; 
+import { getDocs, query, collection, orderBy } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 import Space16 from "../backend/Space16";
 import Link from "next/link";
 
@@ -12,16 +12,15 @@ const BlogSection = () => {
     const fetchRoutineData = async () => {
       const querySnapshot = await getDocs(query(collection(db, "routines")));
       if (!querySnapshot.empty) {
-        const data = querySnapshot.docs.map(doc => {
+        const data = querySnapshot.docs.map((doc) => {
           const routine = doc.data();
           return {
             title: routine.title,
-             id : routine.id,
-              description: routine.description,
-              heroImage: routine.heroImage,
-              timestamp: routine.timestamp,
-              title: routine.title
-     
+            id: routine.id,
+            description: routine.description,
+            heroImage: routine.heroImage,
+            timestamp: routine.timestamp,
+            title: routine.title,
           };
         });
         setRoutineData(data);
@@ -39,19 +38,25 @@ const BlogSection = () => {
       <Space16 />
       <Space16 />
       <div className="flex gap-10 justify-center items-center">
-        {routineData.map((routine, index) => (
-          <Link href={`/blogs/${routine.id}`} key={index}  >
-          <div key={index} className="w-56 bg-white border-8 border-white p-2">
-             <img src={routine.heroImage} alt="Routine Image"                          
- className="" />
-             <div className="flex justify-center items-center pt-4">
-               {routine.title}
-             </div>
-             <div className="flex justify-center  items-center pt-4">
-               {routine.description}
-             </div>
-           </div>
-           </Link>
+        {routineData.slice(0, 4).map((routine, index) => (
+          <Link href={`/blogs/${routine.id}`} key={index}>
+            <div
+              key={index}
+              className="w-56 h-72 bg-white border-8 border-white p-2"
+            >
+              <img
+                src={routine.heroImage}
+                alt="Routine Image"
+                className="h-40 object-cover"
+              />
+              <div className="flex justify-center items-center pt-4">
+                {routine.title}
+              </div>
+              <div className="flex justify-center items-center pt-4">
+                {routine.description}
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -59,5 +64,3 @@ const BlogSection = () => {
 };
 
 export default BlogSection;
-
-
