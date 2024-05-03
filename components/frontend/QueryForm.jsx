@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { db } from '../../firebase/firebase'; 
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 
 const QueryForm = () => {
   const [formData, setFormData] = useState({
@@ -22,11 +22,18 @@ const QueryForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(db, "queries"), {
+      const newQueryRef = await addDoc(collection(db, "queries"), {
         name: formData.name,
         email: formData.email,
         message: formData.message
       });
+      console.log("Query added successfully with ID: ", newQueryRef.id);
+  
+      await updateDoc(doc(db, "queries", newQueryRef.id), {
+        id: newQueryRef.id
+      });
+  
+
       console.log("Query added successfully!");
       setFormData({
         name: '',
