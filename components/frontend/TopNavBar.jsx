@@ -31,7 +31,7 @@ const TopNavBar = () => {
             <Link href="/">Home</Link>
             <Link href="/products">Products</Link>
             {/* <Link href="/aboutus">About Us</Link> */}
-            {/* <Link href="/blogs">Blogs</Link> */}
+            <Link href="/blogs">Blogs</Link>
             <Link href="/contact">Contact us</Link>
 
           </div>

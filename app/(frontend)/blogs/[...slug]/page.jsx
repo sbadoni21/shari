@@ -1,11 +1,10 @@
-import BlogsPage from '@/pages/frontend/BlogsPage'
-import React from 'react'
+import BlogsPage from "@/pages/frontend/BlogsPage";
+import React from "react";
 
 export default function page() {
   return (
     <div>
-      
-        <BlogsPage />
+      <BlogsPage />
     </div>
-  )
+  );
 }
