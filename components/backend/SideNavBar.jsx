@@ -11,7 +11,7 @@ export const SideNavBar = () => {
     <div className="bg-primary text-slate min-h-full top-0 fixed w-1/5 ">
       <Link href="/dashboard">
         <div className="flex items-center justify-center py-4 text-7xl">
-<img src="logoSHARI.jpg" alt="" className='h-20 w-20' />        </div>
+<img src="/logoSHARI.jpg" alt="" className='h-20 w-20' />        </div>
       </Link>
       <div className="flex flex-col space-y-6 ml-5 ">
         <Link href="/dashboard">
@@ -50,10 +50,10 @@ export const SideNavBar = () => {
             <span>Blogs</span>
           </div>
         </Link>
-        <Link href="#">
+        <Link href="/dashboard/contactrequests">
           <div className="flex items-center px-4 py-2 hover:text-white  hover:bg-slate">
             <GiFarmTractor className="mr-2" /> 
-            <span>Farmers</span>
+            <span>Contact Requests</span>
           </div>
         </Link>
         <Link href="#">
