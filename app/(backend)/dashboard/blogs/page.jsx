@@ -1,5 +1,5 @@
+import Blogs from '@/pages/backend/Blogs'
 import React from 'react'
-import Blogs from '../../../../pages/backend/Blogs'
 const page = () => {
 
 

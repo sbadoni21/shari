@@ -16,7 +16,7 @@ const BlogSection = () => {
           const routine = doc.data();
           return {
             title: routine.title,
-             uid : routine.uid,
+             id : routine.id,
               description: routine.description,
               heroImage: routine.heroImage,
               timestamp: routine.timestamp,
@@ -32,7 +32,7 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <div className="w-full h-1/2 p-5 md:p-20 bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% text-pink-500 text-center montserrat_Alternates">
+    <div className="w-full h-1/2 p-5 md:p-20 bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% text-pink-500 text-center lemonada">
       <div className="flex items-center justify-start gap-4  ">
         <div className=" text-4xl md:text-6xl allura text-white">Routines</div>
       </div>
@@ -40,7 +40,7 @@ const BlogSection = () => {
       <Space16 />
       <div className="flex gap-10 justify-center items-center">
         {routineData.map((routine, index) => (
-          <Link  href={`https://docs.google.com/document/d/1Z7cR4kzYoxwvmiQip6JUnFwco86Jdtbkd-Z_GoiCJRI/edit?usp=sharing` } key={index}  >
+          <Link href={`/blogs/${routine.id}`} key={index}  >
           <div key={index} className="w-56 bg-white border-8 border-white p-2">
              <img src={routine.heroImage} alt="Routine Image"                          
  className="" />
