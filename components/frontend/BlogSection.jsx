@@ -37,8 +37,8 @@ const BlogSection = () => {
       </div>
       <Space16 />
       <Space16 />
-      <div className="flex gap-10 justify-center items-center">
-        {routineData.slice(0, 4).map((routine, index) => (
+      <div className="flex-col md:flex gap-10 justify-center items-center">
+        {routineData.slice(0, 3).map((routine, index) => (
           <Link href={`/blogs/${routine.id}`} key={index}>
             <div
               key={index}
