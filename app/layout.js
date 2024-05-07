@@ -65,7 +65,9 @@ export default function RootLayout({ children }) {
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3489691346477126"
           crossorigin="anonymous"
+        
         ></Script>
+    <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3489691346477126" as="script"></link>
 
         <Script
           async

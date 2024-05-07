@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-import firebase_app, { db } from "@/firebase/firebase";
+import firebaseApp, { db } from "@/firebase/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import "react-toastify/dist/ReactToastify.css";
 
-const auth = getAuth(firebase_app);
+const auth = getAuth(firebaseApp);
 
 const AuthPage = () => {
   const router = useRouter();
@@ -31,17 +31,18 @@ const AuthPage = () => {
       }
 
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      console.log("User successfully logged in:", user.displayName);
+
 
       setTimeout(() => {
-        toast.success("Welcome " + user.displayName);
+        toast.success("Welcome ADMIN " );
       }, 2000);
-      document.cookie = `token=${user.uid}`;
+      document.cookie = `token=${user.email}`;
+
       document.cookie = `role=${user.role}`;
 
-      if (user.role == "admin") {
-        router.push("/dashboard");
-      }
+
+      router.push("/dashboard");
+
     } catch (error) {
       console.error("Login failed:", error.message);
     }
@@ -64,18 +65,28 @@ const AuthPage = () => {
     <div className="flex justify-center h-[90vh] relative top-10 overflow-hidden">
       <ToastContainer />
       <Image
-        src="/images/cover/cover-01.png"
+        src="/bg.jpg"
         alt="Logo"
         width={1200}
         height={1200}
-        className="rounded-3xl h-[600px] w-[1800px] shadow-2xl shadow-gray-600"
+        className="rounded-3xl h-[500px] w-[1500px] shadow-2xl shadow-gray-600"
       />
-      <div className="absolute bg-opacity-80 rounded-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="absolute bg-opacity-20  rounded-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
         <div className=" font-normal text-center p-8">
           <p className="text-white text-4xl">Welcome Admin</p>
           <p className=" text-white text-xl">Login to Access Admin Dashboard</p>
 
-          <div className="w-96 h-96 bg-opacity-80 bg-black text-black flex rounded-2xl mt-10 p-6">
+          <div className="w-96 h-96 bg-opacity-80 bg-black text-black flex-col rounded-2xl mt-10 p-6">
+            <div className="flex  justify-center items-center">
+              {" "}
+              <Image
+                src="/logoSHARI.jpg"
+                alt="Logo"
+                width={1200}
+                height={1200}
+                className="rounded-full h-[100px] w-[100px] shadow-2xl shadow-gray-600"
+              />
+            </div>
             <form className="m-auto text-black " onSubmit={handleLogin}>
               <div className="mb-4">
                 <label className="text-white justify-start flex text-sm font-medium mb-2">

@@ -5,19 +5,19 @@ import { useEffect, useRef } from 'react';
 const GoogleAdPcItem = () => {
 
 
-  useEffect(() => {
-    const loadAd = () => {
-      if (typeof window !== "undefined" && window.adsbygoogle) {
-        window.adsbygoogle = window.adsbygoogle || [];
-        window.adsbygoogle.push({});
-        adsLoaded.current = true;
-      }
-    };
+  // useEffect(() => {
+  //   const loadAd = () => {
+  //     if (typeof window !== "undefined" && window.adsbygoogle) {
+  //       window.adsbygoogle = window.adsbygoogle || [];
+  //       window.adsbygoogle.push({});
+  //       adsLoaded.current = true;
+  //     }
+  //   };
 
-    if (!adsLoaded.current) {
-      setTimeout(loadAd, 0);
-    }
-  }, []);
+  //   if (!adsLoaded.current) {
+  //     setTimeout(loadAd, 0);
+  //   }
+  // }, []);
 
   return (
     <div
