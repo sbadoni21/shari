@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import GoogleAdPcItem from "../backend/Ads";
 
 const HeroSection = () => {
   const [showContent, setShowContent] = useState(false);
@@ -77,27 +78,23 @@ const HeroSection = () => {
                 RI
               </p>
             </div>
-         
-          </div> 
+          </div>
           <div className="flex flex-row absolute  top-[700px] gap-20  text-3xl text-center ">
-              <div className="w-48 h-20 bg-black text-white rounded-full flex items-center justify-center">
-                SKINCARE
-              </div>
-              <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
-                MAKEUP
-              </div>
-
-              <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
-                FASHION
-              </div>
+            <div className="w-48 h-20 bg-black text-white rounded-full flex items-center justify-center">
+              SKINCARE
             </div>
+            <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
+              MAKEUP
+            </div>
+
+            <div className="w-48 h-20 bg-black text-white rounded-full  flex items-center justify-center">
+              FASHION
+            </div>
+          </div>
         </div>
       )}
       {showSmallScreen && (
-        <div
-          className=" text-white items-center bg-gradient-to-t from-[#E499B8] from-10% to-black to-95%  text-8xl w-full "
-          
-        >
+        <div className=" text-white items-center bg-gradient-to-t from-[#E499B8] from-10% to-black to-95%  text-8xl w-full ">
           <div className=" pt-40 pb-48 flex flex-col items-center justify-center ">
             <div className="flex justify-center items-center  align-bottom">
               <p
@@ -150,6 +147,7 @@ const HeroSection = () => {
           </div>
         </div>
       )}
+  <GoogleAdPcItem/>
     </>
   );
 };

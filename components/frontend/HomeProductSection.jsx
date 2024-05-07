@@ -79,6 +79,7 @@ const HomeProductSection = () => {
           responsive={responsive}
           draggable={true}
           swipeable={true}
+
           infinite={true}
           autoPlay={true}
           partialVisible={false}

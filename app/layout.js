@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "../styles/globals.scss";
+import { ToastContainer } from "react-toastify";
+
 import {
   Allura,
   Roboto_Mono,
@@ -82,6 +84,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${allura.variable} ${montserrat_Alternates.variable} ${robotoMono.variable} ${londrinaoutline.variable}  ${lemonada.variable}`}
       >
+                <ToastContainer />
+
         {children}
       </body>
     </html>
