@@ -67,6 +67,9 @@ const Blogs = () => {
   const handleClose = () => {
     setOpenContainer(false);
   };
+  const handleEditingClose = () => {
+    setOpenBlogEditing(false);
+  };
 
   const handleID = ({ id }) => {
     setID(id);
@@ -145,7 +148,7 @@ const Blogs = () => {
             </div>
           ))}
         </div>
-        {openBlogEditing && <BlogsEditPage id={id} />}
+        {openBlogEditing && <BlogsEditPage id={id}  />}
       </div>
     </>
   );

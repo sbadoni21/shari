@@ -37,13 +37,10 @@ import {
 } from "../../models/dataModels";
 import Space16 from "@/components/backend/Space16";
 
-const BlogsEditPage = ({ id }) => {
+const BlogsEditPage = ({ id,  }) => {
   const [routineData, setRoutineData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
-  const [openContainer, setOpenContainer] = useState(false);
-  const [openOtherData, setOpenOtherData] = useState(false);
-  const [main, setMain] = useState({});
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
@@ -54,11 +51,9 @@ const BlogsEditPage = ({ id }) => {
     setOpenDialog(true);
   };
 
-
   const handleCount = () => {
     setCount(count + 1);
   };
-
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
@@ -66,16 +61,13 @@ const BlogsEditPage = ({ id }) => {
     setOpenContainer(false);
   };
 
-
   const handleOpenMainMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-
   const handleOpenLinesMenu = (event) => {
     setAnchorEl2(event.currentTarget);
   };
-
 
   const handleOpenSpaceMenu = (event) => {
     setAnchorEl3(event.currentTarget);
@@ -85,11 +77,9 @@ const BlogsEditPage = ({ id }) => {
     setAnchorEl3(null);
   };
 
-
   const handleCloseLinesMenu = () => {
     setAnchorEl2(null);
   };
-
 
   const handleCloseMainMenu = () => {
     setAnchorEl(null);
@@ -457,6 +447,7 @@ const BlogsEditPage = ({ id }) => {
               >
                 Spaces
               </Button>
+              {/* <Button onClick={handleEditingClose()}>Back</Button>{" "} */}
             </div>
             {/* All DropDowns for changes*/}
 
