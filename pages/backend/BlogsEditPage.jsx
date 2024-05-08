@@ -6,6 +6,8 @@ import {
   collection,
   updateDoc,
   where,
+  getDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { Button, Menu, MenuItem } from "@mui/material";
@@ -94,6 +96,33 @@ const BlogsEditPage = ({ id }) => {
   const handleCloseMainMenu = () => {
     setAnchorEl(null);
   };
+  const handleDelete = async (index) => {
+    try {
+      const routineDocRef = doc(db, "routines", id);
+      const routineDocSnapshot = await getDoc(routineDocRef);
+
+      if (routineDocSnapshot.exists()) {
+        const content = routineDocSnapshot.data().content;
+        if (index >= 0 && index < content.length) {
+          const updatedContent = [
+            ...content.slice(0, index),
+            ...content.slice(index + 1),
+          ];
+
+          await updateDoc(routineDocRef, { content: updatedContent });
+
+          console.log("Object deleted successfully.");
+          fetchRoutineData();
+        } else {
+          console.error("Index out of bounds.");
+        }
+      } else {
+        console.error("Routine document not found.");
+      }
+    } catch (error) {
+      console.error("Error deleting object:", error);
+    }
+  };
   const fetchRoutineData = async () => {
     const querySnapshot = await getDocs(
       query(collection(db, "routines"), where("id", "==", id))
@@ -166,6 +195,9 @@ const BlogsEditPage = ({ id }) => {
                             <p>
                               <i className="text-red-300">{item.italicLine}</i>
                             </p>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "list":
@@ -184,6 +216,9 @@ const BlogsEditPage = ({ id }) => {
                                   </span>
                                 </li>
                               ))}
+                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                                Delete
+                              </button>
                             </ul>
                           </div>
                         );
@@ -191,6 +226,9 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index} className="bg-red-300 w-fit px-2">
                             {item.content}
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "smallItalicLine":
@@ -199,6 +237,9 @@ const BlogsEditPage = ({ id }) => {
                             <i className="text-blue-300 italic">
                               {item.content}
                             </i>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "gallery":
@@ -218,6 +259,9 @@ const BlogsEditPage = ({ id }) => {
                                 ))}
                               </div>
                             )}
+                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "steps":
@@ -229,6 +273,9 @@ const BlogsEditPage = ({ id }) => {
                                 <li key={stepIndex}>{step.content}</li>
                               ))}
                             </ol>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "quote":
@@ -238,30 +285,45 @@ const BlogsEditPage = ({ id }) => {
                               <p>{item.text}</p>
                               <footer>{item.author}</footer>
                             </blockquote>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "caption":
                         return (
                           <div key={index}>
                             <p>{item.text}</p>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "heading":
                         return (
                           <div key={index}>
                             <p className="text-5xl text-bold">{item.text}</p>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "tag":
                         return (
                           <div key={index}>
                             <span>{item.text}</span>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "listItem":
                         return (
                           <div key={index}>
                             <li>{item.text}</li>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
                           </div>
                         );
                       case "codeBlock":
@@ -269,20 +331,41 @@ const BlogsEditPage = ({ id }) => {
                           <div key={index} className="bg-gray-100 p-3">
                             <pre>
                               <code>{item.code}</code>
+                              <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                                Delete
+                              </button>
                             </pre>
                           </div>
                         );
                       case "space10":
                         return (
-                          <div key={index} className="w-full h-[10px]"></div>
+                          <>
+                            {" "}
+                            <div key={index} className="w-full h-[10px]"></div>
+                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              Delete
+                            </button>
+                          </>
                         );
                       case "space20":
                         return (
+                          <>
+                          {" "}
                           <div key={index} className="w-full h-[20px]"></div>
+                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            Delete
+                          </button>
+                        </>
                         );
                       case "space30":
                         return (
-                          <div key={index} className="w-full h-[10px]"></div>
+                          <>
+                          {" "}
+                          <div key={index} className="w-full h-[30px]"></div>
+                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            Delete
+                          </button>
+                        </>
                         );
                       case "horizontalRule":
                         return <hr key={index} />;

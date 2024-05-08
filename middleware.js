@@ -17,12 +17,9 @@ export function middleware(request) {
       return NextResponse.redirect(new URL("/login", request.nextUrl));
     }
   }
-
-  // If it's not a dashboard route, allow the request to proceed.
   return NextResponse.next();
 }
 
 export const config = {
-  // Define the routes that the middleware should be applied to.
   matcher: ["/", "/login", "/dashboard", "/dashboard/:path*"],
 };
