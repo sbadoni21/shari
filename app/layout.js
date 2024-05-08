@@ -53,6 +53,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+      <meta name="google-adsense-account" content="ca-pub-3489691346477126" />
         <Script id="google-analytics">
           {`  window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
