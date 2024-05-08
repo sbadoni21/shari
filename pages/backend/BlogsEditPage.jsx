@@ -12,7 +12,6 @@ import {
 import { db } from "../../firebase/firebase";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { DialogActions, TextField } from "@mui/material";
-
 import {
   bigHighlightedLineModel,
   paragraphModel,
@@ -48,39 +47,36 @@ const BlogsEditPage = ({ id }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const [anchorEl3, setAnchorEl3] = useState(null);
-
   const [count, setCount] = useState(0);
+
   const handleOpenDialog = (model) => {
     setSelectedModel(model);
     setOpenDialog(true);
   };
 
-  const mainDetials = async (model) => {
-    setSelectedModel(model);
-    setOpenContainer(true);
-  };
+
   const handleCount = () => {
     setCount(count + 1);
   };
-  const handleMainSubmit = () => {
-    setOpenOtherData(true);
-  };
+
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setOpenOtherData(false);
     setOpenContainer(false);
   };
-  const handleID = (id) => {
-    setID(id);
-  };
+
+
   const handleOpenMainMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+
   const handleOpenLinesMenu = (event) => {
     setAnchorEl2(event.currentTarget);
   };
+
+
   const handleOpenSpaceMenu = (event) => {
     setAnchorEl3(event.currentTarget);
   };
@@ -89,9 +85,11 @@ const BlogsEditPage = ({ id }) => {
     setAnchorEl3(null);
   };
 
+
   const handleCloseLinesMenu = () => {
     setAnchorEl2(null);
   };
+
 
   const handleCloseMainMenu = () => {
     setAnchorEl(null);
@@ -156,8 +154,8 @@ const BlogsEditPage = ({ id }) => {
       : routineData;
   return (
     <>
-      <div className="w-[100%] min-h-screen bg-white absolute z-10 top-0 left-0">
-        <div className="flex    h-full z-20">
+      <div className="w-[100%] pb-36 bg-white absolute z-10 top-0 left-0">
+        <div className="flex h-full z-20">
           <div>
             <div>
               <div
@@ -195,7 +193,10 @@ const BlogsEditPage = ({ id }) => {
                             <p>
                               <i className="text-red-300">{item.italicLine}</i>
                             </p>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -216,7 +217,10 @@ const BlogsEditPage = ({ id }) => {
                                   </span>
                                 </li>
                               ))}
-                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
                                 Delete
                               </button>
                             </ul>
@@ -226,7 +230,10 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index} className="bg-red-300 w-fit px-2">
                             {item.content}
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -237,7 +244,10 @@ const BlogsEditPage = ({ id }) => {
                             <i className="text-blue-300 italic">
                               {item.content}
                             </i>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -259,7 +269,10 @@ const BlogsEditPage = ({ id }) => {
                                 ))}
                               </div>
                             )}
-                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -273,7 +286,10 @@ const BlogsEditPage = ({ id }) => {
                                 <li key={stepIndex}>{step.content}</li>
                               ))}
                             </ol>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -285,7 +301,10 @@ const BlogsEditPage = ({ id }) => {
                               <p>{item.text}</p>
                               <footer>{item.author}</footer>
                             </blockquote>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -294,7 +313,10 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index}>
                             <p>{item.text}</p>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -303,7 +325,10 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index}>
                             <p className="text-5xl text-bold">{item.text}</p>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -312,7 +337,10 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index}>
                             <span>{item.text}</span>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -321,7 +349,10 @@ const BlogsEditPage = ({ id }) => {
                         return (
                           <div key={index}>
                             <li>{item.text}</li>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </div>
@@ -331,7 +362,10 @@ const BlogsEditPage = ({ id }) => {
                           <div key={index} className="bg-gray-100 p-3">
                             <pre>
                               <code>{item.code}</code>
-                              <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
                                 Delete
                               </button>
                             </pre>
@@ -342,7 +376,10 @@ const BlogsEditPage = ({ id }) => {
                           <>
                             {" "}
                             <div key={index} className="w-full h-[10px]"></div>
-                            <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
                               Delete
                             </button>
                           </>
@@ -350,22 +387,28 @@ const BlogsEditPage = ({ id }) => {
                       case "space20":
                         return (
                           <>
-                          {" "}
-                          <div key={index} className="w-full h-[20px]"></div>
-                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
-                            Delete
-                          </button>
-                        </>
+                            {" "}
+                            <div key={index} className="w-full h-[20px]"></div>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              Delete
+                            </button>
+                          </>
                         );
                       case "space30":
                         return (
                           <>
-                          {" "}
-                          <div key={index} className="w-full h-[30px]"></div>
-                          <button onClick={() => handleDelete(index)} className="bg-red-500 rounded-lg p-3 text-white">
-                            Delete
-                          </button>
-                        </>
+                            {" "}
+                            <div key={index} className="w-full h-[30px]"></div>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              Delete
+                            </button>
+                          </>
                         );
                       case "horizontalRule":
                         return <hr key={index} />;

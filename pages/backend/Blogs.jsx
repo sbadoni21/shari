@@ -112,7 +112,7 @@ const Blogs = () => {
       <div className="p-20 flex-col">
         {/* Add  A new routine */}
         <Button
-          className="w-40 h-12 bg-red-300 rounded-lg hover:bg-green-400 text-white font-bold "
+          className="w-40 h-12 bg-primary rounded-lg hover:bg-green-400 text-white font-bold "
           onClick={() => mainDetials(routineModel)}
         >
           Add New Blog
@@ -127,25 +127,19 @@ const Blogs = () => {
         />
         <Space16 />
         {/* Data for all Routines */}
-        <div className="flex flex-wrap">
+        <div className="flex gap-4 flex-wrap ">
           {routineData.map((routine) => (
-            <div className=" bg-primary w-40" key={routine.id}>
+            <div className=" bg-primary rounded-lg w-64 pb-10 relative" key={routine.id}>
               <img
                 alt=" "
                 onClick={() => handleID({ id: routine.id })}
                 src={`${routine.heroImage}`}
                 width={100}
                 height={100}
-                className="w-40 h-40"
+                className="w-64 h-40 rounded-lg"
               />
-              <h2>Title : {routine.title}</h2>
-
-              <p>
-                {routine.timestamp
-                  ? routine.timestamp.toDate().toLocaleString()
-                  : "No timestamp available"}
-              </p>
-              <Button onClick={() => deleteBlog({ id: routine.id, url: routine.heroImage })}>
+              <h2 className="p-2 text-slate">{routine.title}</h2>
+              <Button onClick={() => deleteBlog({ id: routine.id, url: routine.heroImage })} className="bg-red-400 text-sm text-white rounded-lg absolute bottom-2 right-2 ">
                 Delete
               </Button>
             </div>
