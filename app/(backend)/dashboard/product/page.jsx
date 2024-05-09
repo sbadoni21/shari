@@ -359,7 +359,7 @@ const handleCategoriesChange = (e) => {
 
                 <label className="block mb-1 ">Tags:</label>
                 {tags.map((tag) => (
-                  <div  className="flex items-center">
+                  <div                      key={tag.id} className="flex items-center">
                     <input
                     key={tag.id}
                       type="checkbox"
