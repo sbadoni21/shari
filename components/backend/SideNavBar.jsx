@@ -11,7 +11,7 @@ export const SideNavBar = () => {
     <div className="bg-primary text-slate min-h-full top-0 fixed w-1/5 ">
       <Link href="/dashboard">
         <div className="flex items-center justify-center py-4 text-7xl">
-<img src="/logoSHARI.jpg" alt="" className='h-20 w-20' />        </div>
+<img src="/logoSHARI.jpg" alt="" className='h-20 w-20 rounded-full' />        </div>
       </Link>
       <div className="flex flex-col space-y-6 ml-5 ">
         <Link href="/dashboard">
