@@ -387,6 +387,98 @@ const BlogsEditPage = ({ id,  }) => {
                             </button>
                           </>
                         );
+                        case "image":
+                          return (
+                            <div key={index}>
+                              <img src={item.url} alt={item.altText} />
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "video":
+                          return (
+                            <div key={index}>
+                              <video controls>
+                                <source src={item.url} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "audio":
+                          return (
+                            <div key={index}>
+                              <audio controls>
+                                <source src={item.url} type="audio/mpeg" />
+                                Your browser does not support the audio tag.
+                              </audio>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "link":
+                          return (
+                            <div key={index}>
+                              <a href={item.url}>{item.text}</a>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "button":
+                          return (
+                            <div key={index}>
+                              <button>{item.text}</button>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "checkbox":
+                          return (
+                            <div key={index}>
+                              <input type="checkbox" checked={item.checked} onChange={() => {}} />
+                              <label>{item.label}</label>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
+                        case "radio":
+                          return (
+                            <div key={index}>
+                              <input type="radio" checked={item.selectedOption === option} onChange={() => {}} />
+                              <label>{item.label}</label>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          );
                       case "space30":
                         return (
                           <>

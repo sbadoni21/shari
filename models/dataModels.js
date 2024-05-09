@@ -131,3 +131,81 @@ export const horizontalRuleModel = {
   type: "horizontalRule",
   name: "Horizontal Rule",
 };
+export const imageModel = {
+  type: "image",
+  name: "Image",
+  url: { type: "string" },
+  altText: { type: "string" },
+};
+
+export const videoModel = {
+  type: "video",
+  name: "Video",
+  url: { type: "string" },
+};
+
+export const audioModel = {
+  type: "audio",
+  name: "Audio",
+  url: { type: "string" },
+};
+
+export const linkModel = {
+  type: "link",
+  name: "Link",
+  url: { type: "string" },
+  text: { type: "string" },
+};
+
+export const buttonModel = {
+  type: "button",
+  name: "Button",
+  text: { type: "string" },
+  url: { type: "string" },
+};
+
+export const checkboxModel = {
+  type: "checkbox",
+  name: "Checkbox",
+  label: { type: "string" },
+  checked: { type: "boolean" },
+};
+
+export const radioModel = {
+  type: "radio",
+  name: "Radio",
+  label: { type: "string" },
+  options: { type: "array" },
+  selectedOption: { type: "string" },
+};
+
+export const dropdownModel = {
+  type: "dropdown",
+  name: "Dropdown",
+  label: { type: "string" },
+  options: { type: "array" },
+  selectedOption: { type: "string" },
+};
+
+export const datePickerModel = {
+  type: "datePicker",
+  name: "Date Picker",
+  label: { type: "string" },
+  selectedDate: { type: "string" },
+};
+
+export const timePickerModel = {
+  type: "timePicker",
+  name: "Time Picker",
+  label: { type: "string" },
+  selectedTime: { type: "string" },
+};
+
+export const fileUploadModel = {
+  type: "fileUpload",
+  name: "File Upload",
+  label: { type: "string" },
+  acceptedFormats: { type: "array" },
+  uploadedFile: { type: "string" },
+};
+ 

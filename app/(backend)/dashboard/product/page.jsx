@@ -11,6 +11,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const AddProductForm = () => {
   const [productData, setProductData] = useState({
@@ -187,7 +188,7 @@ const AddProductForm = () => {
       await deleteObject(storageRef);
       const photoRef = doc(db, "product", id);
       await deleteDoc(photoRef);
-      // toast.success("Deleted Successfully !!!");
+       toast.success("Deleted Successfully !!!");
       setDeleteConfirmation({
         id:"",
         url:""
@@ -195,7 +196,7 @@ const AddProductForm = () => {
       fetchProducts();
     } catch (error) {
       console.error("Error deleting:", error);
-      // toast.error("Error deleting. Please try again.");
+     toast.error("Error deleting. Please try again.");
     }
   };
 
@@ -354,11 +355,13 @@ const handleCategoriesChange = (e) => {
                   className="w-full  px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                 />
               </div>
-              <div className="mb-4">
-                <label className="block mb-1">Tags:</label>
+              <div className="flex">       <div className="mb-4 overflow-y-auto" style={{ maxHeight: "100px" }}>
+
+                <label className="block mb-1 ">Tags:</label>
                 {tags.map((tag) => (
-                  <div key={tag.id} className="flex items-center">
+                  <div  className="flex items-center">
                     <input
+                    key={tag.id}
                       type="checkbox"
                       id={tag.id}
                       name={tag.tag}
@@ -371,7 +374,8 @@ const handleCategoriesChange = (e) => {
                   </div>
                 ))}
               </div>
-              <div className="mb-4">
+              <div className="mb-4 overflow-y-auto" style={{ maxHeight: "100px" }}>
+
                 <label className="block mb-1">Categories:</label>
                 {categories.map((category) => (
                   <div key={category.id} className="flex items-center">
@@ -387,7 +391,8 @@ const handleCategoriesChange = (e) => {
                     <label htmlFor={category.id}>{category.category}</label>
                   </div>
                 ))}
-              </div>
+              </div></div>
+             
 
               <div className="mb-4 ">
                 <label htmlFor="link" className="block mb-1">
