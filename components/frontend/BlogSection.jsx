@@ -42,7 +42,7 @@ const BlogSection = () => {
           <Link href={`/blogs/${routine.id}`} key={index}>
             <div
               key={index}
-              className="w-56 h-72 bg-white border-8 border-white p-2"
+              className="w-56 bg-white border-8 border-white p-2"
             >
               <img
                 src={routine.heroImage}
