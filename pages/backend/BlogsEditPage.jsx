@@ -12,6 +12,8 @@ import {
 import { db } from "../../firebase/firebase";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { DialogActions, TextField } from "@mui/material";
+import { MdDelete } from "react-icons/md";
+
 import {
   bigHighlightedLineModel,
   paragraphModel,
@@ -23,6 +25,8 @@ import {
   largeLineModel,
   mediumItalicLineModel,
   mediumLineModel,
+  largeItalicBoldfontModel
+  ,mediumItalicBoldfontModel,smallItalicBoldfontModel,
   smallLineModel,
   captionModel,
   codeBlockModel,
@@ -30,6 +34,8 @@ import {
   horizontalRuleModel,
   listItemModel,
   quoteModel,
+  audioModel,
+  buttonModel,checkboxModel,datePickerModel,dropdownModel,fileUploadModel,imageModel,largeBoldfontModel,linkModel,mediumBoldfontModel,radioModel,smallBoldfontModel,timePickerModel,videoModel, 
   space10Model,
   space20Model,
   space30Model,
@@ -57,8 +63,6 @@ const BlogsEditPage = ({ id,  }) => {
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    setOpenOtherData(false);
-    setOpenContainer(false);
   };
 
   const handleOpenMainMenu = (event) => {
@@ -154,21 +158,21 @@ const BlogsEditPage = ({ id,  }) => {
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                 }}
-                className="  pl-20 pr-20 pt-20 pb-20 h-[600px] text-pink-500 text-center lemonada z-10"
-              >
+                className="w-[99vw] h-[70vh] pl-20 pr-20 pt-40 pb-20  text-pink-500 text-center lemonada z-10"
+                >
                 <Space16 />
                 <Space16 />
                 {!routineData ? (
                   <></>
                 ) : (
                   <>
-                    <div className="text-6xl allura text-black">
-                      {routineData.title}
-                    </div>
-                    <div className="text-6xl allura text-black">
-                      {routineData.description}
-                    </div>
-                  </>
+                  <p className="text-4xl md:text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3 ">
+                    {routineData.title}
+                  </p>
+                  <p className="text-4xl md:text-6xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 p-3 ">
+                    {routineData.description}
+                  </p>
+                </>
                 )}
               </div>
               {routineData?.content?.length > 0 ? (
@@ -187,7 +191,7 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+<MdDelete />
                             </button>
                           </div>
                         );
@@ -211,7 +215,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </ul>
                           </div>
@@ -224,7 +229,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -238,7 +244,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -263,7 +270,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -280,7 +288,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -295,7 +304,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -307,22 +317,185 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
-                      case "heading":
-                        return (
-                          <div key={index}>
-                            <p className="text-5xl text-bold">{item.text}</p>
-                            <button
-                              onClick={() => handleDelete(index)}
-                              className="bg-red-500 rounded-lg p-3 text-white"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        );
+                        case "mediumBoldfontModel":
+                          return (
+                            <div key={index}>
+                              <p className="text-xl font-extrabold">{item.content}</p>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                <MdDelete />
+
+                              </button>
+                            </div>
+                          );
+                          case "smallBoldfontModel":
+                            return (
+                              <div key={index}>
+                                <p className="text-sm font-extrabold">{item.content}</p>
+                                <button
+                                  onClick={() => handleDelete(index)}
+                                  className="bg-red-500 rounded-lg p-3 text-white"
+                                >
+                                  <MdDelete />
+
+                                </button>
+                              </div>
+                            );
+                            case "largeBoldfontModel":
+                              return (
+                                <div key={index}>
+                                  <p className="text-3xl font-extrabold">{item.content}</p>
+                                  <button
+                                    onClick={() => handleDelete(index)}
+                                    className="bg-red-500 rounded-lg p-3 text-white"
+                                  >
+<MdDelete />
+                                  </button>
+                                </div>
+                              );
+
+
+
+                              case "mediumItalicBoldfontModel":
+                                return (
+                                  <div key={index}>
+                                    <i className="text-xl font-extrabold">{item.content}</i>
+                                    <button
+                                      onClick={() => handleDelete(index)}
+                                      className="bg-red-500 rounded-lg p-3 text-white"
+                                    >
+                                      <MdDelete />
+
+                                    </button>
+                                  </div>
+                                );
+                                case "smallItalicBoldfontModel":
+                                  return (
+                                    <div key={index}>
+                                      <i className="text-sm font-extrabold">{item.content}</i>
+                                      <button
+                                        onClick={() => handleDelete(index)}
+                                        className="bg-red-500 rounded-lg p-3 text-white"
+                                      >
+                                        <MdDelete />
+
+                                      </button>
+                                    </div>
+                                  );
+                                  case "largeItalicBoldfontModel":
+                                    return (
+                                      <div key={index}>
+                                        <i className="text-3xl font-extrabold">{item.content}</i>
+                                        <button
+                                          onClick={() => handleDelete(index)}
+                                          className="bg-red-500 rounded-lg p-3 text-white"
+                                        >
+                                          <MdDelete />
+
+                                        </button>
+                                      </div>
+                                    );
+
+
+                                    case "mediumItalicLine":
+                                      return (
+                                        <div key={index}>
+                                          <i className="text-xl ">{item.content}</i>
+                                          <button
+                                            onClick={() => handleDelete(index)}
+                                            className="bg-red-500 rounded-lg p-3 text-white"
+                                          >
+<MdDelete />
+                                          </button>
+                                        </div>
+                                      );
+                                      case "smallLine":
+                                        return (
+                                          <div key={index}>
+                                            <p className="text-sm">{item.content}</p>
+                                            <button
+                                              onClick={() => handleDelete(index)}
+                                              className="bg-red-500 rounded-lg p-3 text-white"
+                                            >
+                                              <MdDelete />
+
+                                            </button>
+                                          </div>
+                                        );
+                                        case "largeLine":
+                                          return (
+                                            <div key={index}>
+                                              <p className="text-3xl">{item.content}</p>
+                                              <button
+                                                onClick={() => handleDelete(index)}
+                                                className="bg-red-500 rounded-lg p-3 text-white"
+                                              >
+                                                <MdDelete />
+
+                                              </button>
+                                            </div>
+                                          );
+
+
+
+
+                        case "mediumLine":
+                          return (
+                            <div key={index}>
+                              <p className="text-xl text-bold">{item.content}</p>
+                              <button
+                                onClick={() => handleDelete(index)}
+                                className="bg-red-500 rounded-lg p-3 text-white"
+                              >
+                                <MdDelete />
+
+                              </button>
+                            </div>
+                          );
+                          case "smallLine":
+                            return (
+                              <div key={index}>
+                                <p className="text-sm text-bold">{item.content}</p>
+                                <button
+                                  onClick={() => handleDelete(index)}
+                                  className="bg-red-500 rounded-lg p-3 text-white"
+                                >
+<MdDelete />
+                                </button>
+                              </div>
+                            );
+                            case "largeLine":
+                              return (
+                                <div key={index}>
+                                  <p className="text-3xl text-bold">{item.content}</p>
+                                  <button
+                                    onClick={() => handleDelete(index)}
+                                    className="bg-red-500 rounded-lg p-3 text-white"
+                                  >
+<MdDelete />
+                                  </button>
+                                </div>
+                              );
+                              case "heading":
+                                return (
+                                  <div key={index} className="flex">
+                                    <p className="text-xl md:text-3xl text-bold ` ">{item.text}</p>
+                                    <button
+                                      onClick={() => handleDelete(index)}
+                                      className="bg-red-500 rounded-lg p-3 text-white"
+                                    >
+                                      <MdDelete />
+
+                                    </button>
+                                  </div>
+                                );  
                       case "tag":
                         return (
                           <div key={index}>
@@ -331,7 +504,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -343,7 +517,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </div>
                         );
@@ -356,7 +531,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </pre>
                           </div>
@@ -370,7 +546,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </>
                         );
@@ -383,7 +560,8 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </>
                         );
@@ -395,7 +573,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -410,7 +589,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -425,7 +605,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -437,7 +618,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -449,7 +631,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -462,7 +645,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -475,7 +659,8 @@ const BlogsEditPage = ({ id,  }) => {
                                 onClick={() => handleDelete(index)}
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
-                                Delete
+                                <MdDelete />
+
                               </button>
                             </div>
                           );
@@ -488,12 +673,19 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-                              Delete
+                              <MdDelete />
+
                             </button>
                           </>
                         );
                       case "horizontalRule":
-                        return <hr key={index} />;
+                        return <><hr key={index} />    <button
+                        onClick={() => handleDelete(index)}
+                        className="bg-red-500 rounded-lg p-3 text-white"
+                      >
+                        <MdDelete />
+
+                      </button></>;
                       default:
                         return null;
                     }
@@ -595,8 +787,11 @@ const BlogsEditPage = ({ id,  }) => {
                 largeItalicLineModel,
                 largeLineModel,
                 mediumItalicLineModel,
+                largeItalicBoldfontModel
+                ,mediumItalicBoldfontModel,smallItalicBoldfontModel,
                 mediumLineModel,
                 smallLineModel,
+                largeBoldfontModel,linkModel,mediumBoldfontModel,smallBoldfontModel,
               ].map((model, index) => (
                 <MenuItem
                   key={index}

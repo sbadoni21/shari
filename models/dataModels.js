@@ -60,6 +60,39 @@ export const largeLineModel = {
   name: "Large Line",
   content: { type: "string" },
 };
+export const largeBoldfontModel = {
+  type: "largeBoldfontModel",
+  name: "Large Bold Font Line",
+  content: { type: "string" },
+};
+export const mediumBoldfontModel = {
+  type: "mediumBoldfontModel",
+  name: "Medium Bold Font Line",
+  content: { type: "string" },
+};
+export const smallBoldfontModel = {
+  type: "smallBoldfontModel",
+  name: "Small Bold Font Line",
+  content: { type: "string" },
+};
+
+
+export const largeItalicBoldfontModel = {
+  type: "largeItalicBoldfontModel",
+  name: "Large Italic Bold Font Line",
+  content: { type: "string" },
+};
+export const mediumItalicBoldfontModel = {
+  type: "mediumItalicBoldfontModel",
+  name: "Medium Italic Bold Font Line",
+  content: { type: "string" },
+};
+export const smallItalicBoldfontModel = {
+  type: "smallItalicBoldfontModel",
+  name: "Small Italic Bold Font Line",
+  content: { type: "string" },
+};
+
 export const smallItalicLineModel = {
   name: "Small Italic Line",
   type: "smallItalicLine",
@@ -106,7 +139,6 @@ export const headingModel = {
   type: "heading",
   name: "Heading",
   text: { type: "string" },
-  level: { type: "number" }, 
 };
 export const tagModel = {
   type: "tag",

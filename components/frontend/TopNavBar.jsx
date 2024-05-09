@@ -39,7 +39,7 @@ const TopNavBar = () => {
       )}
 
       {showMenuButton && (
-        <div className="flex fixed justify-center items-center ">
+        <div className="flex absolute z-10 top-0 justify-start items-start backdrop-blur-2xl w-screen">
           <button
             onClick={handleMenuClick}
             className="hover:bg-blue-700 text-gray-500 allura text-5xl font-bold py-2 px-4 rounded"
@@ -58,6 +58,8 @@ const TopNavBar = () => {
             <Link onClick={handleMenuClick} href="/products">
               Products
             </Link>
+            <Link href="/blogs">Blogs</Link>
+
             {/* <Link onClick={handleMenuClick} href="/aboutus">
               About Us
             </Link> */}

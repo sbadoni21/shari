@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Space16 from "@/components/backend/Space16";
 import { db } from "@/firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -35,21 +35,27 @@ const BlogsCatalogue = () => {
         </div>
         <Space16 />
         <Space16 />
-        <div className="flex gap-10 justify-center items-center">
-        {routines.map((routine, index) => (
-          <Link href={`/blogs/${routine.id}`} key={index}  >
-          <div key={index} className="w-56 h-72 bg-white border-8 border-white p-2">
-             <img src={routine.heroImage} alt="Routine Image "                         
- className="h-40 object-cover" />
-             <div className="flex justify-center items-center pt-4">
-               {routine.title}
-             </div>
-             <div className="flex justify-center  items-center pt-4">
-               {routine.description}
-             </div>
-           </div>
-           </Link>
-        ))}
+        <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
+          {routines.map((routine, index) => (
+            <Link href={`/blogs/${routine.id}`} key={index}>
+              <div
+                key={index}
+                className="w-56  bg-white border-8 border-white p-2"
+              >
+                <img
+                  src={routine.heroImage}
+                  alt="Routine Image "
+                  className="h-40 object-cover"
+                />
+                <div className="flex justify-center items-center pt-4">
+                  {routine.title}
+                </div>
+                <div className="flex justify-center  items-center pt-4">
+                  {routine.description}
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
