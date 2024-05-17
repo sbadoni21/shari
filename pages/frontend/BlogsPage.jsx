@@ -108,11 +108,20 @@ const BlogsPage = () => {
               );
             case "bigHighlightedLine":
               return (
-                <div key={index} className="bg-red-300 w-fit px-2">
+                <div key={index} className="bg-red-300 text-xl w-fit px-2">
                   {item.content}
                   
                 </div>
+                
               );
+              case "highlightedItalicLine":
+                return (
+                  <div key={index} className="bg-red-300  w-fit px-2">
+                    {item.content}
+                    
+                  </div>
+                );
+
             case "smallItalicLine":
               return (
                 <div key={index}>
@@ -321,7 +330,7 @@ const BlogsPage = () => {
             case "link":
               return (
                 <div key={index}>
-                  <a href={item.url}>{item.text}</a>
+                  <a className="text-blue underline" href={item.url}>{item.text}</a>
                   
                 </div>
               );

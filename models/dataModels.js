@@ -1,28 +1,4 @@
 
-// export const listModel = {
-//   title: {
-//     type: "string",
-//   },
-//   type: "list",
-//   heading: { type: "string" },
-//   content: { type: "string" },
-//   heading: { type: "string" },
-//   type: { type: "string" },
-// };
-// export const stepModel = {
-//   title: { type: "string" },
-//   type: "steps",
-//   heading: { type: "string" },
-//   steps: {
-//     type: "array",
-
-
-//     content: { type: "string" },
-//     sno: { type: "string" },
-//   },
-// };
-
-//DONE
 export const routineModel = {
   title: { type: "string" },
   description: { type: "string" },
@@ -31,6 +7,13 @@ export const routineModel = {
 export const bigHighlightedLineModel = {
   type: "bigHighlightedLine",
   name: "Big Highlighted Line",
+  color: { type: "string" },
+  content: { type: "string" },
+};
+
+export const highlightedItalicLine = {
+  type: "highlightedItalicLine",
+  name: "Highlighted Italic Line",
   color: { type: "string" },
   content: { type: "string" },
 };

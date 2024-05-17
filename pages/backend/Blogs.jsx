@@ -42,7 +42,6 @@ import Space16 from "@/components/backend/Space16";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import BlogsEditPage from "./BlogsEditPage";
 import { id_ID } from "@faker-js/faker";
-import { toast } from "react-toastify";
 
 const Blogs = () => {
   const [routineData, setRoutineData] = useState([]);
@@ -170,7 +169,6 @@ const MainEntryDialogbox = ({ open, handleClose, model, fetchRoutineData }) => {
   
   const handleSubmit = async () => {
     try {
-      toast.info("Uploading")
       const { heroImage, ...formDataWithoutImage } = formData;
       
       const storageRef = ref(storage, `product_images/${Date.now()}`);
@@ -191,7 +189,6 @@ const MainEntryDialogbox = ({ open, handleClose, model, fetchRoutineData }) => {
     } catch (error) {
       console.error("Error adding data:", error);
     }
-    toast.success("Created a new Blog")
       setFormData({});
     handleClose();
   };

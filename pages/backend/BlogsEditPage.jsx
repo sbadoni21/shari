@@ -19,14 +19,16 @@ import {
   paragraphModel,
   routineModel,
   smallItalicLineModel,
+  highlightedItalicLine,
   boldLine,
   highlightedParagraphModel,
   largeItalicLineModel,
   largeLineModel,
   mediumItalicLineModel,
   mediumLineModel,
-  largeItalicBoldfontModel
-  ,mediumItalicBoldfontModel,smallItalicBoldfontModel,
+  largeItalicBoldfontModel,
+  mediumItalicBoldfontModel,
+  smallItalicBoldfontModel,
   smallLineModel,
   captionModel,
   codeBlockModel,
@@ -35,7 +37,19 @@ import {
   listItemModel,
   quoteModel,
   audioModel,
-  buttonModel,checkboxModel,datePickerModel,dropdownModel,fileUploadModel,imageModel,largeBoldfontModel,linkModel,mediumBoldfontModel,radioModel,smallBoldfontModel,timePickerModel,videoModel, 
+  buttonModel,
+  checkboxModel,
+  datePickerModel,
+  dropdownModel,
+  fileUploadModel,
+  imageModel,
+  largeBoldfontModel,
+  linkModel,
+  mediumBoldfontModel,
+  radioModel,
+  smallBoldfontModel,
+  timePickerModel,
+  videoModel,
   space10Model,
   space20Model,
   space30Model,
@@ -43,7 +57,7 @@ import {
 } from "../../models/dataModels";
 import Space16 from "@/components/backend/Space16";
 
-const BlogsEditPage = ({ id,  }) => {
+const BlogsEditPage = ({ id }) => {
   const [routineData, setRoutineData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
@@ -159,20 +173,20 @@ const BlogsEditPage = ({ id,  }) => {
                   backgroundSize: "cover",
                 }}
                 className="w-[99vw] h-[70vh] pl-20 pr-20 pt-40 pb-20  text-pink-500 text-center lemonada z-10"
-                >
+              >
                 <Space16 />
                 <Space16 />
                 {!routineData ? (
                   <></>
                 ) : (
                   <>
-                  <p className="text-4xl md:text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3 ">
-                    {routineData.title}
-                  </p>
-                  <p className="text-4xl md:text-6xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 p-3 ">
-                    {routineData.description}
-                  </p>
-                </>
+                    <p className="text-4xl md:text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3 ">
+                      {routineData.title}
+                    </p>
+                    <p className="text-2xl md:text-4xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 p-3 ">
+                      {routineData.description}
+                    </p>
+                  </>
                 )}
               </div>
               {routineData?.content?.length > 0 ? (
@@ -191,7 +205,7 @@ const BlogsEditPage = ({ id,  }) => {
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
-<MdDelete />
+                              <MdDelete />
                             </button>
                           </div>
                         );
@@ -216,23 +230,33 @@ const BlogsEditPage = ({ id,  }) => {
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
                                 <MdDelete />
-
                               </button>
                             </ul>
                           </div>
                         );
                       case "bigHighlightedLine":
                         return (
-                          <div key={index} className="bg-red-300 w-fit px-2">
+                          <div key={index} className="bg-red-300 text-xl w-fit px-2">
                             {item.content}
                             <button
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
+                        );
+                      case "highlightedItalicLine":
+                        return (
+                          <i key={index} className="bg-red-300 w-fit px-2">
+                            {item.content}
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </i>
                         );
                       case "smallItalicLine":
                         return (
@@ -245,7 +269,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -271,7 +294,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -289,7 +311,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -305,7 +326,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -318,184 +338,182 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
-                        case "mediumBoldfontModel":
-                          return (
-                            <div key={index}>
-                              <p className="text-xl font-extrabold">{item.content}</p>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
+                      case "mediumBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <p className="text-xl font-extrabold">
+                              {item.content}
+                            </p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "smallBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <p className="text-sm font-extrabold">
+                              {item.content}
+                            </p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "largeBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <p className="text-3xl font-extrabold">
+                              {item.content}
+                            </p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
 
-                              </button>
-                            </div>
-                          );
-                          case "smallBoldfontModel":
-                            return (
-                              <div key={index}>
-                                <p className="text-sm font-extrabold">{item.content}</p>
-                                <button
-                                  onClick={() => handleDelete(index)}
-                                  className="bg-red-500 rounded-lg p-3 text-white"
-                                >
-                                  <MdDelete />
+                      case "mediumItalicBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <i className="text-xl font-extrabold">
+                              {item.content}
+                            </i>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "smallItalicBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <i className="text-sm font-extrabold">
+                              {item.content}
+                            </i>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "largeItalicBoldfontModel":
+                        return (
+                          <div key={index}>
+                            <i className="text-3xl font-extrabold">
+                              {item.content}
+                            </i>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
 
-                                </button>
-                              </div>
-                            );
-                            case "largeBoldfontModel":
-                              return (
-                                <div key={index}>
-                                  <p className="text-3xl font-extrabold">{item.content}</p>
-                                  <button
-                                    onClick={() => handleDelete(index)}
-                                    className="bg-red-500 rounded-lg p-3 text-white"
-                                  >
-<MdDelete />
-                                  </button>
-                                </div>
-                              );
+                      case "mediumItalicLine":
+                        return (
+                          <div key={index}>
+                            <i className="text-xl ">{item.content}</i>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "smallLine":
+                        return (
+                          <div key={index}>
+                            <p className="text-sm">{item.content}</p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "largeLine":
+                        return (
+                          <div key={index}>
+                            <p className="text-3xl">{item.content}</p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
 
-
-
-                              case "mediumItalicBoldfontModel":
-                                return (
-                                  <div key={index}>
-                                    <i className="text-xl font-extrabold">{item.content}</i>
-                                    <button
-                                      onClick={() => handleDelete(index)}
-                                      className="bg-red-500 rounded-lg p-3 text-white"
-                                    >
-                                      <MdDelete />
-
-                                    </button>
-                                  </div>
-                                );
-                                case "smallItalicBoldfontModel":
-                                  return (
-                                    <div key={index}>
-                                      <i className="text-sm font-extrabold">{item.content}</i>
-                                      <button
-                                        onClick={() => handleDelete(index)}
-                                        className="bg-red-500 rounded-lg p-3 text-white"
-                                      >
-                                        <MdDelete />
-
-                                      </button>
-                                    </div>
-                                  );
-                                  case "largeItalicBoldfontModel":
-                                    return (
-                                      <div key={index}>
-                                        <i className="text-3xl font-extrabold">{item.content}</i>
-                                        <button
-                                          onClick={() => handleDelete(index)}
-                                          className="bg-red-500 rounded-lg p-3 text-white"
-                                        >
-                                          <MdDelete />
-
-                                        </button>
-                                      </div>
-                                    );
-
-
-                                    case "mediumItalicLine":
-                                      return (
-                                        <div key={index}>
-                                          <i className="text-xl ">{item.content}</i>
-                                          <button
-                                            onClick={() => handleDelete(index)}
-                                            className="bg-red-500 rounded-lg p-3 text-white"
-                                          >
-<MdDelete />
-                                          </button>
-                                        </div>
-                                      );
-                                      case "smallLine":
-                                        return (
-                                          <div key={index}>
-                                            <p className="text-sm">{item.content}</p>
-                                            <button
-                                              onClick={() => handleDelete(index)}
-                                              className="bg-red-500 rounded-lg p-3 text-white"
-                                            >
-                                              <MdDelete />
-
-                                            </button>
-                                          </div>
-                                        );
-                                        case "largeLine":
-                                          return (
-                                            <div key={index}>
-                                              <p className="text-3xl">{item.content}</p>
-                                              <button
-                                                onClick={() => handleDelete(index)}
-                                                className="bg-red-500 rounded-lg p-3 text-white"
-                                              >
-                                                <MdDelete />
-
-                                              </button>
-                                            </div>
-                                          );
-
-
-
-
-                        case "mediumLine":
-                          return (
-                            <div key={index}>
-                              <p className="text-xl text-bold">{item.content}</p>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                          case "smallLine":
-                            return (
-                              <div key={index}>
-                                <p className="text-sm text-bold">{item.content}</p>
-                                <button
-                                  onClick={() => handleDelete(index)}
-                                  className="bg-red-500 rounded-lg p-3 text-white"
-                                >
-<MdDelete />
-                                </button>
-                              </div>
-                            );
-                            case "largeLine":
-                              return (
-                                <div key={index}>
-                                  <p className="text-3xl text-bold">{item.content}</p>
-                                  <button
-                                    onClick={() => handleDelete(index)}
-                                    className="bg-red-500 rounded-lg p-3 text-white"
-                                  >
-<MdDelete />
-                                  </button>
-                                </div>
-                              );
-                              case "heading":
-                                return (
-                                  <div key={index} className="flex">
-                                    <p className="text-xl md:text-3xl text-bold ` ">{item.text}</p>
-                                    <button
-                                      onClick={() => handleDelete(index)}
-                                      className="bg-red-500 rounded-lg p-3 text-white"
-                                    >
-                                      <MdDelete />
-
-                                    </button>
-                                  </div>
-                                );  
+                      case "mediumLine":
+                        return (
+                          <div key={index}>
+                            <p className="text-xl text-bold">{item.content}</p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "smallLine":
+                        return (
+                          <div key={index}>
+                            <p className="text-sm text-bold">{item.content}</p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "largeLine":
+                        return (
+                          <div key={index}>
+                            <p className="text-3xl text-bold">{item.content}</p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "heading":
+                        return (
+                          <div key={index} className="flex">
+                            <p className="text-xl md:text-3xl text-bold ` ">
+                              {item.text}
+                            </p>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
                       case "tag":
                         return (
                           <div key={index}>
@@ -505,7 +523,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -518,7 +535,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </div>
                         );
@@ -532,7 +548,6 @@ const BlogsEditPage = ({ id,  }) => {
                                 className="bg-red-500 rounded-lg p-3 text-white"
                               >
                                 <MdDelete />
-
                               </button>
                             </pre>
                           </div>
@@ -547,7 +562,6 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </>
                         );
@@ -561,109 +575,109 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </>
                         );
-                        case "image":
-                          return (
-                            <div key={index}>
-                              <img src={item.url} alt={item.altText} />
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "video":
-                          return (
-                            <div key={index}>
-                              <video controls>
-                                <source src={item.url} type="video/mp4" />
-                                Your browser does not support the video tag.
-                              </video>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "audio":
-                          return (
-                            <div key={index}>
-                              <audio controls>
-                                <source src={item.url} type="audio/mpeg" />
-                                Your browser does not support the audio tag.
-                              </audio>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "link":
-                          return (
-                            <div key={index}>
-                              <a href={item.url}>{item.text}</a>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "button":
-                          return (
-                            <div key={index}>
-                              <button>{item.text}</button>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "checkbox":
-                          return (
-                            <div key={index}>
-                              <input type="checkbox" checked={item.checked} onChange={() => {}} />
-                              <label>{item.label}</label>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
-                        case "radio":
-                          return (
-                            <div key={index}>
-                              <input type="radio" checked={item.selectedOption === option} onChange={() => {}} />
-                              <label>{item.label}</label>
-                              <button
-                                onClick={() => handleDelete(index)}
-                                className="bg-red-500 rounded-lg p-3 text-white"
-                              >
-                                <MdDelete />
-
-                              </button>
-                            </div>
-                          );
+                      case "image":
+                        return (
+                          <div key={index}>
+                            <img src={item.url} alt={item.altText} />
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "video":
+                        return (
+                          <div key={index}>
+                            <video controls>
+                              <source src={item.url} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "audio":
+                        return (
+                          <div key={index}>
+                            <audio controls>
+                              <source src={item.url} type="audio/mpeg" />
+                              Your browser does not support the audio tag.
+                            </audio>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "link":
+                        return (
+                          <div key={index}>
+                  <a className="text-blue underline" href={item.url}>{item.text}</a>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "button":
+                        return (
+                          <div key={index}>
+                            <button>{item.text}</button>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "checkbox":
+                        return (
+                          <div key={index}>
+                            <input
+                              type="checkbox"
+                              checked={item.checked}
+                              onChange={() => {}}
+                            />
+                            <label>{item.label}</label>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
+                      case "radio":
+                        return (
+                          <div key={index}>
+                            <input
+                              type="radio"
+                              checked={item.selectedOption === option}
+                              onChange={() => {}}
+                            />
+                            <label>{item.label}</label>
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </div>
+                        );
                       case "space30":
                         return (
                           <>
@@ -674,18 +688,21 @@ const BlogsEditPage = ({ id,  }) => {
                               className="bg-red-500 rounded-lg p-3 text-white"
                             >
                               <MdDelete />
-
                             </button>
                           </>
                         );
                       case "horizontalRule":
-                        return <><hr key={index} />    <button
-                        onClick={() => handleDelete(index)}
-                        className="bg-red-500 rounded-lg p-3 text-white"
-                      >
-                        <MdDelete />
-
-                      </button></>;
+                        return (
+                          <>
+                            <hr key={index} />{" "}
+                            <button
+                              onClick={() => handleDelete(index)}
+                              className="bg-red-500 rounded-lg p-3 text-white"
+                            >
+                              <MdDelete />
+                            </button>
+                          </>
+                        );
                       default:
                         return null;
                     }
@@ -787,11 +804,16 @@ const BlogsEditPage = ({ id,  }) => {
                 largeItalicLineModel,
                 largeLineModel,
                 mediumItalicLineModel,
-                largeItalicBoldfontModel
-                ,mediumItalicBoldfontModel,smallItalicBoldfontModel,
+                largeItalicBoldfontModel,
+                mediumItalicBoldfontModel,
+                smallItalicBoldfontModel,
                 mediumLineModel,
                 smallLineModel,
-                largeBoldfontModel,linkModel,mediumBoldfontModel,smallBoldfontModel,
+                largeBoldfontModel,
+                linkModel,
+                mediumBoldfontModel,
+                smallBoldfontModel,
+                highlightedItalicLine,
               ].map((model, index) => (
                 <MenuItem
                   key={index}

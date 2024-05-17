@@ -58,7 +58,7 @@ const TopNavBar = () => {
             <Link onClick={handleMenuClick} href="/products">
               Products
             </Link>
-            <Link href="/blogs">Blogs</Link>
+            <Link onClick={handleMenuClick} href="/blogs">Blogs</Link>
 
             {/* <Link onClick={handleMenuClick} href="/aboutus">
               About Us
