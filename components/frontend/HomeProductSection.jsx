@@ -14,13 +14,11 @@ const HomeProductSection = () => {
     const fetchProducts = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "product"));
-        console.log("Query snapshot:", querySnapshot.docs);
 
         const productsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(productsData);
         setProducts(productsData);
         setLoading(false);
       } catch (error) {

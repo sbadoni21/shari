@@ -160,7 +160,7 @@ const BlogsEditPage = ({ id }) => {
     routineData?.content?.length > 0
       ? routineData.content.sort((a, b) => a.sno - b.sno)
       : routineData;
-  return (
+  return ( 
     <>
       <div className="w-[100%] pb-36 bg-white absolute z-10 top-0 left-0">
         <div className="flex h-full z-20">
