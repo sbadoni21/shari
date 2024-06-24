@@ -2,8 +2,7 @@
 
 export default  {
     images: {
-      domains: ['firebasestorage.googleapis.com',"images.unsplash.com" ],
+    domains: ['firebasestorage.googleapis.com',"images.unsplash.com" ],
 
     },
   };
-  

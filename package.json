@@ -37,8 +37,10 @@
     "react-lottie": "^1.2.4",
     "react-multi-carousel": "^2.8.5",
     "react-responsive-carousel": "^3.2.23",
+    "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
     "sass": "^1.75.0",
+    "slick-carousel": "^1.8.1",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

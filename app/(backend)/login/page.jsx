@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-import firebaseApp, { db } from "../../../firebase/firebase";
+import  { db, firebaseApp } from "@/firebase/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import "react-toastify/dist/ReactToastify.css";

@@ -8,6 +8,8 @@ import BlogSection from "@/components/frontend/BlogSection";
 import Instagram from "@/components/frontend/Instagram";
 import Footer from "@/components/frontend/Footer";
 import firebase_app, { db } from "@/firebase/firebase";
+import VideoPage from "@/pages/frontend/VideoPage";
+import VideoSection from "@/components/frontend/VideoSection";
 
 const HomePage = () => {
   const [showContent, setShowContent] = useState(false);
@@ -24,8 +26,9 @@ const HomePage = () => {
     <div className="">
       <TopNavBar />
       <HeroSection />
-      <HomeProductSection />
+      {/* <HomeProductSection /> */}
       <BlogSection/>
+      <VideoSection/>
       <Instagram />
       <Footer/>
     </div>

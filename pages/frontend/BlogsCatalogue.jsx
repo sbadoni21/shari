@@ -23,7 +23,18 @@ const BlogsCatalogue = () => {
     };
     fetchRoutinesDetails();
   }, []);
-
+  const truncateText = (text, limit) => {
+    if (text === undefined) {
+      return ""; 
+    }
+  
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
+  };
+  
   return (
     <div>
       {" "}
@@ -40,7 +51,7 @@ const BlogsCatalogue = () => {
             <Link href={`/blogs/${routine.id}`} key={index}>
               <div
                 key={index}
-                className="w-56  bg-white border-8 border-white p-2"
+                className="w-56 h-96 bg-white border-8 border-white p-2"
               >
                 <img
                   src={routine.heroImage}
@@ -51,7 +62,7 @@ const BlogsCatalogue = () => {
                   {routine.title}
                 </div>
                 <div className="flex justify-center  items-center pt-4">
-                  {routine.description}
+                {truncateText(routine.description)}
                 </div>
               </div>
             </Link>

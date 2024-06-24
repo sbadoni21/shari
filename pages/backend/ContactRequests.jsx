@@ -14,8 +14,8 @@ const ContactRequests = () => {
 
   const fetchContactRequests = async () => {
     try {
-      const querySnapshot = await getDocs(collection(db, "queries"));
-      const data = querySnapshot.docs.map((doc) => ({
+        const querySnapshot = await getDocs(collection(db, "queries"));
+        const data = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));

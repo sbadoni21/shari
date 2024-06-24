@@ -9,7 +9,7 @@ import {
   getDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+import { db, storage } from "../../firebase/firebase";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { DialogActions, TextField } from "@mui/material";
 import { MdDelete } from "react-icons/md";
@@ -56,6 +56,7 @@ import {
   tagModel,
 } from "../../models/dataModels";
 import Space16 from "@/components/backend/Space16";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const BlogsEditPage = ({ id }) => {
   const [routineData, setRoutineData] = useState([]);
@@ -98,9 +99,29 @@ const BlogsEditPage = ({ id }) => {
   const handleCloseLinesMenu = () => {
     setAnchorEl2(null);
   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setRoutineData({ ...routineData, [name]: value });
+  };
 
   const handleCloseMainMenu = () => {
     setAnchorEl(null);
+  };
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setRoutineData({ ...routineData, heroImage: reader.result });
+    };
+    const bannerRef = ref(storage, `bannerImages/${id}/banner.jpg`);
+    await uploadBytes(bannerRef, file);
+    const downloadURL = await getDownloadURL(bannerRef);
+    const userRef = doc(db, "routines", id);
+    await updateDoc(userRef, { heroImage: downloadURL });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
   const handleDelete = async (index) => {
     try {
@@ -127,6 +148,18 @@ const BlogsEditPage = ({ id }) => {
       }
     } catch (error) {
       console.error("Error deleting object:", error);
+    }
+  };
+  const handleSaveChanges = async () => {
+    try {
+      const routineDocRef = doc(db, "routines", id);
+      await updateDoc(routineDocRef, {
+        title: routineData.title,
+        description: routineData.description,
+      });
+      console.log("Routine updated successfully!");
+    } catch (error) {
+      console.error("Error updating routine:", error);
     }
   };
   const fetchRoutineData = async () => {
@@ -160,34 +193,64 @@ const BlogsEditPage = ({ id }) => {
     routineData?.content?.length > 0
       ? routineData.content.sort((a, b) => a.sno - b.sno)
       : routineData;
-  return ( 
+  return (
     <>
       <div className="w-[100%] pb-36 bg-white absolute z-10 top-0 left-0">
         <div className="flex h-full z-20">
           <div>
             <div>
-              <div
-                style={{
-                  backgroundImage: `url(${routineData?.heroImage})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-                className="w-[99vw] h-[70vh] pl-20 pr-20 pt-40 pb-20  text-pink-500 text-center lemonada z-10"
-              >
-                <Space16 />
-                <Space16 />
-                {!routineData ? (
-                  <></>
-                ) : (
-                  <>
-                    <p className="text-4xl md:text-6xl  allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3 ">
-                      {routineData.title}
-                    </p>
-                    <p className="text-2xl md:text-4xl allura text-black backdrop-blur-sm backdrop-opacity-90  backdrop-brightness-125 p-3 ">
-                      {routineData.description}
-                    </p>
-                  </>
-                )}
+              <div>
+                <div className="w-full pb-36 bg-white absolute z-10 top-0 left-0">
+                  <div className="flex h-full z-20">
+                    <div>
+                      <div>
+                        <div>
+                          <div
+                            style={{
+                              backgroundImage: `url(${routineData?.heroImage})`,
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "cover",
+                            }}
+                            className="w-[100vw] h-[70vh] pl-20 pr-20 pt-40 pb-20 text-pink-500 text-center lemonada z-10"
+                          >
+                            <Space16 />
+                            <Space16 />
+                            <input
+                              type="file"
+                              onChange={handleImageChange}
+                              className="mb-4"
+                              accept="image/*"
+                            />
+                            <input
+                              type="text"
+                              name="title"
+                              value={routineData.title}
+                              onChange={handleInputChange}
+                              placeholder="Enter title"
+                              className="block w-full text-4xl md:text-6xl allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3"
+                            />
+                            <input
+                              type="text"
+                              name="description"
+                              value={routineData.description}
+                              onChange={handleInputChange}
+                              placeholder="Enter description"
+                              className="block w-full text-2xl md:text-4xl allura text-black backdrop-blur-sm backdrop-opacity-90 backdrop-brightness-125 p-3"
+                            />
+                            <DialogActions className="flex justify-end p-0">
+                              <Button
+                                variant="contained"
+                                onClick={handleSaveChanges}
+                              >
+                                Save Changes
+                              </Button>
+                            </DialogActions>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               {routineData?.content?.length > 0 ? (
                 <div className="p-5 md:p-20 space-y-5 text-justify montserrat_Alternates">
@@ -236,7 +299,10 @@ const BlogsEditPage = ({ id }) => {
                         );
                       case "bigHighlightedLine":
                         return (
-                          <div key={index} className="bg-red-300 text-xl w-fit px-2">
+                          <div
+                            key={index}
+                            className="bg-red-300 text-xl w-fit px-2"
+                          >
                             {item.content}
                             <button
                               onClick={() => handleDelete(index)}
@@ -623,7 +689,9 @@ const BlogsEditPage = ({ id }) => {
                       case "link":
                         return (
                           <div key={index}>
-                  <a className="text-blue underline" href={item.url}>{item.text}</a>
+                            <a className="text-blue underline" href={item.url}>
+                              {item.text}
+                            </a>
                             <button
                               onClick={() => handleDelete(index)}
                               className="bg-red-500 rounded-lg p-3 text-white"

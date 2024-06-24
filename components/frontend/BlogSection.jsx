@@ -29,20 +29,32 @@ const BlogSection = () => {
 
     fetchRoutineData();
   }, []);
+  const truncateText = (text, limit) => {
+    if (text === undefined) {
+      return ""; 
+    }
+  
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
+  };
+  
 
   return (
-    <div className="w-full h-1/2 p-5 md:p-20 bg-gradient-to-t from-[#E499B8] from-10% to-black to-95% text-pink-500 text-center lemonada">
+    <div className="w-full h-1/2 p-5 md:p-20 bg-gradient-to-t to-[#E499B8] from-10% from-black to-95% text-pink-500 text-center lemonada">
       <div className="flex items-center justify-start gap-4  ">
         <div className=" text-4xl md:text-6xl allura text-white">Routines</div>
       </div>
       <Space16 />
       <Space16 />
       <div className=" flex flex-col md:flex-row gap-10 justify-center items-center align-middle">
-        {routineData.slice(0, 3).map((routine, index) => (
+        {routineData.slice(0, 5).map((routine, index) => (
           <Link href={`/blogs/${routine.id}`} key={index}>
             <div
               key={index}
-              className="w-56 bg-white border-8 border-white p-2"
+              className="w-56 h-96 bg-white border-8 border-white p-2"
             >
               <img
                 src={routine.heroImage}
@@ -52,8 +64,8 @@ const BlogSection = () => {
               <div className="flex justify-center items-center pt-4">
                 {routine.title}
               </div>
-              <div className="flex justify-center items-center pt-4 ">
-                {routine.description}
+              <div className="flex justify-center items-center pt-4 text-sm">
+                {truncateText(routine.description)}
               </div>
             </div>
           </Link>

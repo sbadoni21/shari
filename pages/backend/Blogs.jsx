@@ -41,7 +41,6 @@ import {
 import Space16 from "@/components/backend/Space16";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import BlogsEditPage from "./BlogsEditPage";
-import { id_ID } from "@faker-js/faker";
 
 const Blogs = () => {
   const [routineData, setRoutineData] = useState([]);

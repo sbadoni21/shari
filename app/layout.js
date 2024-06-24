@@ -10,7 +10,6 @@ import {
   Montserrat_Alternates,
   Libre_Franklin,
 } from "next/font/google";
-import TopNavBar from "@/components/frontend/TopNavBar";
 import Script from "next/script";
 const allura = Allura({
   subsets: ["latin"],
