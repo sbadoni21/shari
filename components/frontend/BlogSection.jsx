@@ -65,7 +65,7 @@ const BlogSection = () => {
                 {routine.title}
               </div>
               <div className="flex justify-center items-center pt-4 text-sm">
-                {truncateText(routine.description)}
+                {truncateText(routine.description,20)}
               </div>
             </div>
           </Link>

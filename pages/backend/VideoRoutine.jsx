@@ -16,7 +16,8 @@ const VideoGalleryPage = () => {
 
   const [showAddModal, setShowAddModal] = useState(false);
 
-  // Fetch videos from Firestore
+ 
+  
   const fetchVideos = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "videoRoutines"));
@@ -96,7 +97,17 @@ const VideoGalleryPage = () => {
       console.error("Error deleting video:", error);
     }
   };
-
+  const truncateText = (text, limit) => {
+    if (text === undefined) {
+      return ""; 
+    }
+  
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
+  };
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="container mx-auto px-4">
@@ -133,7 +144,7 @@ const VideoGalleryPage = () => {
                         onChange={(e) =>
                           setEditVideo({ ...editVideo, title: e.target.value })
                         }
-                        className="block w-full border rounded-md p-1"
+                        className="block w-full border rounded-md  p-1 text-black"
                       />
                       <textarea
                         value={editVideo.description}
@@ -143,11 +154,11 @@ const VideoGalleryPage = () => {
                             description: e.target.value,
                           })
                         }
-                        className="block w-full border rounded-md p-1 mt-2"
+                        className="block w-full border rounded-md p-1 mt-2 text-black"
                       ></textarea>
                       <button
                         onClick={handleEditVideo}
-                        className="bg-blue-500 text-white px-4 py-1 rounded-md mt-2"
+                        className="bg-blue-500 text-white bg-slate px-10 rounded-md mt-2"
                       >
                         Save
                       </button>
@@ -155,7 +166,7 @@ const VideoGalleryPage = () => {
                   ) : (
                     <>
                       <h2 className="text-lg font-bold">{video.title}</h2>
-                      <p className="text-sm">{video.description}</p>
+                      <p className="text-sm">{truncateText(video.description, 10)}</p>
                       <div className="flex justify-center mt-2">
                         <button
                           onClick={() => setEditVideo(video)}
